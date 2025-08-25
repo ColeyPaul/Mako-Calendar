@@ -9,32 +9,31 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f9ff; /* Light blue-ish background, inspired by water in logo */
-            color: #334155; /* Darker text for readability */
+            background-color: #f0f9ff;
+            color: #334155;
         }
         .container {
             max-width: 1024px;
         }
         .header-bg {
-            background-color: #e0f2fe; /* Lighter blue for header, similar to logo's water */
+            background-color: #e0f2fe;
         }
         .button-primary {
-            background-color: #36678d; /* A darker, richer blue from the logo */
+            background-color: #36678d;
             color: #ffffff;
             transition: background-color 0.3s ease;
         }
         .button-primary:hover {
-            background-color: #2b5575; /* Slightly darker on hover */
+            background-color: #2b5575;
         }
         .form-bg {
-            background-color: #fefefe; /* Near white for form background */
-            border: 1px solid #dbeafe; /* Light blue border */
+            background-color: #fefefe;
+            border: 1px solid #dbeafe;
         }
-        /* Custom styles for the calendar iframe to ensure responsiveness */
         .calendar-container {
             position: relative;
             width: 100%;
-            padding-bottom: 75%; /* Aspect ratio 4:3 (height/width * 100) */
+            padding-bottom: 75%;
             height: 0;
             overflow: hidden;
             border-radius: 0.5rem;
@@ -46,14 +45,13 @@
             width: 100%;
             height: 100%;
         }
-        /* Accordion specific styles */
         .accordion-header {
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 1.5rem;
-            background-color: #f8fafc; /* Slightly off-white for the header */
+            background-color: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 0.5rem;
             font-weight: 600;
@@ -67,14 +65,14 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            background-color: #ffffff; /* White background for content */
+            background-color: #ffffff;
             border: 1px solid #e2e8f0;
             border-top: none;
             border-radius: 0 0 0.5rem 0.5rem;
             padding: 0 1.5rem;
         }
         .accordion-content.active {
-            max-height: 500px; /* Adjust as needed for content length */
+            max-height: 500px;
             padding-top: 1rem;
             padding-bottom: 1rem;
             transition: max-height 0.5s ease-in, padding 0.3s ease-in;
@@ -84,29 +82,6 @@
         }
         .accordion-icon.rotate {
             transform: rotate(90deg);
-        }
-        /* Message box styles (not used for Google Forms direct submission, but kept for consistency if needed elsewhere) */
-        .message-box {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: none; /* Hidden by default */
-            text-align: center;
-        }
-        .message-box button {
-            background-color: #36678d;
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 15px;
         }
     </style>
 </head>
@@ -121,7 +96,7 @@
                 <p class="text-gray-600 text-sm md:text-base leading-relaxed">
                     Your unofficial, community-managed hub for Mako school events, holidays, class parties, and more... all automated in one easy-to-access location.
                 </p>
-                </div>
+            </div>
         </div>
     </div>
 
@@ -141,7 +116,8 @@
         <section class="mb-8 max-w-2xl mx-auto rounded-lg shadow-md">
             <div class="accordion-header" id="howItWorksHeader">
                 <span>Here’s how it works:</span>
-                <span class="accordion-icon">&#9658;</span> </div>
+                <span class="accordion-icon">&#9658;</span>
+            </div>
             <div class="accordion-content" id="howItWorksContent">
                 <ul class="list-disc list-inside text-left mx-auto space-y-2">
                     <li><span class="font-semibold">It’s a combo of community and tech:</span> We use AI agents and automation to pull information directly from various sources like Mako email messages, Room Parent emails, and teacher updates. This helps us cover the broad strokes of school life.</li>
@@ -185,7 +161,7 @@
         </section>
 
         <p class="mt-6 text-center text-base text-gray-600">
-            Questions? <a href="mailto:mattandnicolepaul@gmail.com" class="text-blue-700 hover:underline">Contact us</a>.
+            Questions? contact mattandnicolepaul@gmail.com
         </p>
         <p class="text-sm text-gray-500 mt-2 text-center">
             Interested in scaling this beyond 1st grade kids for all Makos? Looking for a new feature request? Have an idea? Let us know! Note: Submitted events will be reviewed by before being added to the official calendar.
@@ -204,7 +180,6 @@
             const content = document.getElementById('howItWorksContent');
             const icon = header.querySelector('.accordion-icon');
 
-            // Accordion functionality
             header.addEventListener('click', function() {
                 content.classList.toggle('active');
                 icon.classList.toggle('rotate');
