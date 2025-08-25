@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VdM 1st Grade Mako Sharks Calendar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff; /* Light blue-ish background, inspired by water in logo */
+            color: #334155; /* Darker text for readability */
+        }
+        .container {
+            max-width: 1024px;
+        }
+        .header-bg {
+            background-color: #e0f2fe; /* Lighter blue for header, similar to logo's water */
+        }
+        .button-primary {
+            background-color: #36678d; /* A darker, richer blue from the logo */
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+        .button-primary:hover {
+            background-color: #2b5575; /* Slightly darker on hover */
+        }
+        .form-bg {
+            background-color: #fefefe; /* Near white for form background */
+            border: 1px solid #dbeafe; /* Light blue border */
+        }
+        /* Custom styles for the calendar iframe to ensure responsiveness */
+        .calendar-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* Aspect ratio 4:3 (height/width * 100) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .calendar-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Accordion specific styles */
+        .accordion-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: #f8fafc; /* Slightly off-white for the header */
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            color: #334155;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: #eef2f6;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #ffffff; /* White background for content */
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem;
+            padding: 0 1.5rem;
+        }
+        .accordion-content.active {
+            max-height: 500px; /* Adjust as needed for content length */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            transition: max-height 0.5s ease-in, padding 0.3s ease-in;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-icon.rotate {
+            transform: rotate(90deg);
+        }
+        /* Message box styles (not used for Google Forms direct submission, but kept for consistency if needed elsewhere) */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            text-align: center;
+        }
+        .message-box button {
+            background-color: #36678d;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="header-bg py-6 shadow-md rounded-b-xl mb-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
+            <img src="https://schoolmanager.s3.amazonaws.com/uploads/pictures/25fc030945e24d4498604749accee590.png"
+                 alt="VdM Mako Sharks Logo"
+                 class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-6 shadow-lg">
+            <div class="max-w-xl">
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Vista del Mar Community Calendar</h1>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                    Your unofficial, community-managed hub for Mako school events, holidays, class parties, and more... all automated in one easy-to-access location.
+                </p>
+                </div>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-gray-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-center">
+            <p class="mb-4">
+                <strong>Just Keep Calm and Calendar On...</strong>
+            </p>
+            <p class="mb-4">
+                It's 2025, and you shouldn't be spending your time manually adding every school event to your personal calendar. We've all been there—scrolling through endless capo pdfs, cross referencing the school website, looking at class messages to confirm a minimum day schedule... Wondering if it's "dress like a pirate" day, or getting a last-minute reminder to reload the book fair e-wallet. It's time to simplify.
+            </p>
+            <p class="mb-4">
+                We've created a new, unofficial Vista Del Mar 1st Grade Sharks calendar to help you get organized. This calendar is a combination of community submissions and AI-powered automation.
+            </p>
+        </div>
+
+        <section class="mb-8 max-w-2xl mx-auto rounded-lg shadow-md">
+            <div class="accordion-header" id="howItWorksHeader">
+                <span>Here’s how it works:</span>
+                <span class="accordion-icon">&#9658;</span> </div>
+            <div class="accordion-content" id="howItWorksContent">
+                <ul class="list-disc list-inside text-left mx-auto space-y-2">
+                    <li><span class="font-semibold">It’s a combo of community and tech:</span> We use AI agents and automation to pull information directly from various sources like Mako email messages, Room Parent emails, and teacher updates. This helps us cover the broad strokes of school life.</li>
+                    <li><span class="font-semibold">Your input matters:</span> We also rely on manual input from our community. If you see something missing or have a new event to add, you can submit it to the calendar. This combination of AI and community coordination ensures the calendar is as accurate and complete as possible.</li>
+                    <li><span class="font-semibold">It syncs with your life:</span> The best part? You can automatically sync this calendar with your personal one (Google Calendar, iCal, etc.). No more manual data entry or missed events. We're doing the heavy lifting so you can keep calm and calendar on.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="text-center mb-12">
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-4">Never Miss an Event!</h2>
+            <p class="text-gray-600 max-w-xl mx-auto mb-6">
+                Click the appropriate button below to automatically sync our community calendar with your personal one.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com" target="_blank" class="inline-block button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                    Add to Google Calendar
+                </a>
+                <a href="webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics" class="inline-block button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                    Add to Apple / Outlook
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-4 text-center">Mako Community Calendar at a Glance</h2>
+            <div class="calendar-container shadow-xl rounded-lg">
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23f0f9ff&ctz=America%2FLos_Angeles&src=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4%40group.calendar.google.com&color=%234285F4&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=MONTH" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </section>
+
+        <p class="text-gray-700 text-base md:text-lg mb-4 text-center max-w-2xl mx-auto">
+            Can't find an event on the calendar, or planning one yourself? We can't be everywhere at once! Help keep our community calendar complete by submitting the details below.
+        </p>
+
+        <section class="form-bg p-6 md:p-8 rounded-lg shadow-xl mb-12 text-center">
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-6">Add a Mako Community Calendar Event</h2>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="inline-block button-primary py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                Submit
+            </a>
+        </section>
+
+        <p class="mt-6 text-center text-base text-gray-600">
+            Questions? <a href="mailto:mattandnicolepaul@gmail.com" class="text-blue-700 hover:underline">Contact us</a>.
+        </p>
+        <p class="text-sm text-gray-500 mt-2 text-center">
+            Interested in scaling this beyond 1st grade kids for all Makos? Looking for a new feature request? Have an idea? Let us know! Note: Submitted events will be reviewed by before being added to the official calendar.
+        </p>
+    </main>
+
+    <footer class="bg-gray-100 py-6 mt-12 rounded-t-xl shadow-inner">
+        <div class="container mx-auto px-4 text-center text-gray-600 text-sm">
+            &copy; 2025 Mako Sharks Community Calendar - Powered by AI and a MakoMama
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('howItWorksHeader');
+            const content = document.getElementById('howItWorksContent');
+            const icon = header.querySelector('.accordion-icon');
+
+            // Accordion functionality
+            header.addEventListener('click', function() {
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate');
+            });
+        });
+    </script>
+</body>
+</html>
