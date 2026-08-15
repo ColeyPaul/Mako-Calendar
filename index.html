@@ -26,6 +26,15 @@
         .button-primary:hover {
             background-color: #2b5575;
         }
+        .button-secondary {
+            background-color: #ffffff;
+            color: #36678d;
+            border: 1px solid #36678d;
+            transition: all 0.2s ease;
+        }
+        .button-secondary:hover {
+            background-color: #f0f9ff;
+        }
         .tab-button {
             transition: all 0.2s ease;
         }
@@ -107,7 +116,7 @@
                 </div>
                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Vista del Mar Community Hub</h1>
                 <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-                    Official community calendar, TK & 2nd grade schedules, and AI resources for parents.
+                    Custom family calendar builder, whole-school master calendar, and AI resources for parents.
                 </p>
             </div>
         </div>
@@ -122,6 +131,9 @@
             <button onclick="switchTab('ai-mom-tab')" id="btn-ai-mom-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
                 AI Toolkit & Life Hacks
             </button>
+            <button onclick="switchTab('sponsor-tab')" id="btn-sponsor-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
+                Sponsor & Consult
+            </button>
             <button onclick="switchTab('submit-tab')" id="btn-submit-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
                 Submit Event
             </button>
@@ -131,118 +143,72 @@
         <div id="calendar-tab" class="tab-content active">
             <div class="text-gray-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-center">
                 <p class="mb-2 font-semibold text-sky-900 text-xl">
-                    Vista del Mar Community Calendar
+                    Just Keep Calm and Calendar On...
                 </p>
                 <p class="text-sm md:text-base text-gray-600">
-                    Automated calendar updates directly from Capo USD emails and Mako Messenger newsletters.
+                    Build a custom calendar that combines your kids' exact bell schedules with the master Vista Del Mar school calendar.
                 </p>
             </div>
 
-            <!-- Personalized Child Bell Schedule Builder -->
+            <!-- Multi-Child Custom Calendar Sync Builder -->
             <section class="mb-10 max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200">
                 <div class="text-center mb-6">
                     <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300 mb-2">
-                        Child Schedule Sync
+                        Custom Family Calendar Sync
                     </span>
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">Add Child's Bell Schedule to Calendar</h2>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">Customize & Sync Your Family Calendar</h2>
                     <p class="text-xs md:text-sm text-gray-600 mt-1">
-                        Enter your child's name and grade to generate a custom calendar invitation.
+                        Add your children below to combine their bell schedules with the Master School Calendar in 1 click!
                     </p>
                 </div>
 
-                <div class="space-y-4 max-w-lg mx-auto">
-                    <!-- Child Name Input -->
-                    <div>
-                        <label for="childName" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child's Name</label>
-                        <input type="text" id="childName" placeholder="e.g. Benny or Jackson" value="Benny" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-sm font-medium text-gray-800 shadow-sm">
-                    </div>
-
-                    <!-- Grade Selector Dropdown -->
-                    <div>
-                        <label for="childGrade" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Select Grade Level</label>
-                        <select id="childGrade" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-sm font-medium text-gray-800 shadow-sm bg-white">
-                            <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
-                            <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
-                            <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
-                            <option value="1st">1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                            <option value="2nd" selected>2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                            <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                            <option value="4th_5th">4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
-                            <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
-                        </select>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="pt-2">
-                        <button onclick="addCustomChildToGoogle()" class="w-full button-primary py-3 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
-                            Sync to Google Calendar
-                        </button>
-                    </div>
-
-                    <p id="invitePreview" class="text-xs text-center text-sky-800 font-medium bg-sky-50 p-2 rounded border border-sky-200">
-                        Preview Invite Title: <span id="titlePreviewText" class="font-bold">Benny's TK Bell Schedule</span>
-                    </p>
-                </div>
-            </section>
-
-            <!-- Bell Schedule Quick Reference Cards -->
-            <section class="mb-10 max-w-3xl mx-auto bg-white rounded-xl shadow-sm border border-sky-100 p-6">
-                <div class="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
-                    <h2 class="text-xl font-bold text-gray-800">
-                        Bell Schedule Reference Cards
-                    </h2>
-                    <span class="text-xs bg-sky-100 text-sky-800 font-semibold px-2.5 py-1 rounded-md">2025–2026</span>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- TK Early Birds -->
-                    <div class="bg-purple-50/60 p-4 rounded-lg border border-purple-100">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-purple-900 text-base">TK (Early Birds)</h3>
-                            <span class="text-xs bg-purple-200 text-purple-800 font-bold px-2 py-0.5 rounded">TK</span>
+                <div id="childrenContainer" class="space-y-4 max-w-lg mx-auto mb-4">
+                    <!-- Child 1 Row -->
+                    <div class="child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
+                                <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="e.g. Benny" value="Benny">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Grade Level</label>
+                                <select class="child-grade w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
+                                    <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
+                                    <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
+                                    <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
+                                    <option value="1st" selected>1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                                    <option value="2nd">2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                                    <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                                    <option value="4th_5th">4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
+                                    <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
+                                </select>
+                            </div>
                         </div>
-                        <ul class="text-sm space-y-1.5 text-gray-700">
-                            <li class="flex justify-between"><span>Instruction Begins:</span> <span class="font-semibold text-gray-900">8:00 AM</span></li>
-                            <li class="flex justify-between"><span>Regular Dismissal:</span> <span class="font-bold text-purple-900">11:20 AM</span></li>
-                            <li class="flex justify-between pt-1 border-t border-purple-200"><span class="font-medium text-amber-800">Minimum Day Dismissal:</span> <span class="font-bold text-amber-900">11:20 AM</span></li>
-                        </ul>
-                    </div>
-
-                    <!-- 2nd Grade -->
-                    <div class="bg-emerald-50/60 p-4 rounded-lg border border-emerald-100">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-emerald-900 text-base">2nd Grade</h3>
-                            <span class="text-xs bg-emerald-200 text-emerald-800 font-bold px-2 py-0.5 rounded">2nd</span>
-                        </div>
-                        <ul class="text-sm space-y-1.5 text-gray-700">
-                            <li class="flex justify-between"><span>Instruction Begins:</span> <span class="font-semibold text-gray-900">8:00 AM</span></li>
-                            <li class="flex justify-between"><span>Regular Dismissal:</span> <span class="font-bold text-emerald-900">2:05 PM</span></li>
-                            <li class="flex justify-between pt-1 border-t border-emerald-200"><span class="font-medium text-amber-800">Minimum Day Dismissal:</span> <span class="font-bold text-amber-900">12:45 PM</span></li>
-                        </ul>
                     </div>
                 </div>
-                <p class="text-xs text-gray-500 mt-4 text-center">Drop-off is 8:00 AM for both TK & 2nd Grade.</p>
-            </section>
 
-            <!-- Sync CTA Buttons for Shared Calendar -->
-            <section class="text-center mb-12 bg-white p-6 rounded-xl shadow-sm border border-sky-100 max-w-2xl mx-auto">
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-2">Sync the Whole-School Mako Calendar</h2>
-                <p class="text-gray-600 max-w-xl mx-auto mb-6 text-sm md:text-base">
-                    Auto-sync all shared Mako school events, holidays, and minimum days directly to your personal calendar.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com" target="_blank" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-sm">
-                        Add Shared Google Calendar
-                    </a>
-                    <a href="webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-sm">
-                        Add to Apple / Outlook (iCal)
-                    </a>
+                <!-- Add Another Child Button -->
+                <div class="max-w-lg mx-auto mb-6 flex justify-between items-center">
+                    <button onclick="addChildRow()" class="text-xs font-semibold text-sky-700 hover:text-sky-900 underline flex items-center">
+                        + Add Another Child
+                    </button>
+                    <span class="text-xs text-gray-500">+ Includes Master School Calendar</span>
+                </div>
+
+                <!-- One-Click Sync Action Buttons -->
+                <div class="max-w-lg mx-auto space-y-3 pt-2 border-t border-gray-100">
+                    <button onclick="syncCombinedGoogle()" class="w-full button-primary py-3 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
+                        Sync Custom Family Calendar to Google Calendar
+                    </button>
+                    <button onclick="syncCombinedApple()" class="w-full button-secondary py-3 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
+                        Sync to Apple / Outlook Calendar (iCal)
+                    </button>
                 </div>
             </section>
 
             <!-- Embedded Google Calendar -->
             <section class="mb-12">
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4 text-center">Mako Community Calendar at a Glance</h2>
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4 text-center">Master Mako Community Calendar at a Glance</h2>
                 <div class="calendar-container shadow-md rounded-lg border border-sky-200">
                     <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23f0f9ff&ctz=America%2FLos_Angeles&src=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4%40group.calendar.google.com&color=%2336678d&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                 </div>
@@ -261,15 +227,15 @@
                 </p>
             </div>
 
-            <!-- Submit a Prompt Banner -->
-            <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-4 rounded-xl border border-sky-200 mb-8 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <!-- Submit a Prompt Email Banner -->
+            <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-5 rounded-xl border border-sky-200 mb-8 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
                 <div>
                     <h3 class="font-bold text-sky-900 text-sm">Have a Great AI Prompt or Life Hack?</h3>
-                    <p class="text-xs text-gray-600">Submit your prompt ideas to be featured in the community AI hub.</p>
+                    <p class="text-xs text-gray-600">Submit your prompt idea to be added to the community hub.</p>
                 </div>
-                <a href="mailto:mattandnicolepaul@gmail.com?subject=New%20AI%20Prompt%20Suggestion%20for%20Mako%20Hub&body=Hi!%20Here%20is%20an%20AI%20prompt%20or%20life%20hack%20I%20would%20like%20to%20suggest%3A%0A%0APrompt%20Title%3A%20%0APrompt%20Details%3A%20" class="button-primary py-2 px-5 rounded-lg text-xs font-semibold whitespace-nowrap">
+                <button onclick="submitPromptEmail()" class="button-primary py-2.5 px-6 rounded-lg text-xs font-semibold whitespace-nowrap shadow-sm">
                     Submit a Prompt via Email
-                </a>
+                </button>
             </div>
 
             <!-- Category Filter Pills -->
@@ -314,8 +280,8 @@
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
                             Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Open in Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Copy & Open Gemini
                         </button>
                     </div>
                 </div>
@@ -338,8 +304,8 @@
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
                             Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Open in Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Copy & Open Gemini
                         </button>
                     </div>
                 </div>
@@ -362,8 +328,8 @@
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
                             Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Open in Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Copy & Open Gemini
                         </button>
                     </div>
                 </div>
@@ -386,8 +352,8 @@
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
                             Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Open in Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Copy & Open Gemini
                         </button>
                     </div>
                 </div>
@@ -410,8 +376,8 @@
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
                             Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Open in Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Copy & Open Gemini
                         </button>
                     </div>
                 </div>
@@ -434,8 +400,8 @@
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
                             Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Open in Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Copy & Open Gemini
                         </button>
                     </div>
                 </div>
@@ -458,8 +424,8 @@
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
                             Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Open in Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Copy & Open Gemini
                         </button>
                     </div>
                 </div>
@@ -482,8 +448,8 @@
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
                             Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Open in Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Copy & Open Gemini
                         </button>
                     </div>
                 </div>
@@ -543,21 +509,62 @@
                         <p class="text-xs text-gray-600 leading-relaxed">Interactive AI experiments and educational creative games for elementary kids.</p>
                     </a>
 
-                    <!-- PinwheelGPT -->
-                    <a href="https://www.pinwheel.com" target="_blank" class="tool-card group block">
+                    <!-- Bedtimestory.ai -->
+                    <a href="https://bedtimestory.ai" target="_blank" class="tool-card group block">
                         <div class="flex items-center justify-between mb-1">
-                            <h4 class="font-bold text-teal-900 text-sm group-hover:underline">PinwheelGPT</h4>
-                            <span class="text-[10px] bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded font-semibold">Family AI</span>
+                            <h4 class="font-bold text-indigo-900 text-sm group-hover:underline">Bedtimestory.ai</h4>
+                            <span class="text-[10px] bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-semibold">Family AI</span>
                         </div>
-                        <p class="text-xs text-gray-600 leading-relaxed">Kid-safe AI chat tutor that filters mature topics and gives parents full chat history.</p>
+                        <p class="text-xs text-gray-600 leading-relaxed">AI story generator creating illustrated personalized bedtime stories for kids.</p>
                     </a>
                 </div>
             </section>
         </div>
 
-        <!-- TAB 3: SUBMIT EVENT -->
+        <!-- TAB 3: SPONSOR & CONSULT -->
+        <div id="sponsor-tab" class="tab-content">
+            <div class="text-center mb-8 max-w-2xl mx-auto">
+                <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300 mb-2">
+                    Partnerships & Consultation
+                </span>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Sponsor, Advertise & Consult</h2>
+                <p class="text-gray-600 text-sm md:text-base">
+                    Partner with the Vista Del Mar Mako Community Hub or consult with Nicole Paul to build custom AI workflows for your family or organization.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
+                <!-- Sponsor / Advertise Card -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Sponsor or Advertise Your Business</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                            Reach local Vista Del Mar families, school parents, and community members by sponsoring a section or listing your product/service on the Mako Community Hub.
+                        </p>
+                    </div>
+                    <button onclick="sponsorInquiryEmail()" class="w-full button-primary py-2.5 px-4 rounded-lg font-semibold text-xs text-center shadow-sm">
+                        Inquire About Sponsorship & Ads
+                    </button>
+                </div>
+
+                <!-- AI Consultation Card -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-sky-100 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">1-on-1 AI Workflow Consultation</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                            Want to build custom AI prompts, calendar automation, or digital systems tailored to your household, business, or PTA? Book a consultation with Nicole.
+                        </p>
+                    </div>
+                    <button onclick="consultInquiryEmail()" class="w-full button-primary py-2.5 px-4 rounded-lg font-semibold text-xs text-center shadow-sm">
+                        Schedule a Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: SUBMIT EVENT -->
         <div id="submit-tab" class="tab-content">
-            <section class="form-bg p-6 md:p-8 rounded-xl shadow-sm mb-12 text-center max-w-2xl mx-auto border border-blue-100">
+            <section class="bg-white p-6 md:p-8 rounded-xl shadow-sm mb-12 text-center max-w-2xl mx-auto border border-blue-100">
                 <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3">Add a Mako Community Calendar Event</h2>
                 <p class="text-gray-600 text-sm md:text-base mb-6">
                     Planning a TK Early Birds or 2nd Grade class party, room parent event, or noticed a missing school date? Submit your event details below to be reviewed and added to the official calendar.
@@ -595,31 +602,79 @@
             'middle': { label: 'Middle School Bell Schedule', text: '8:00 AM - 2:35 PM (Minimum Day: 1:15 PM)', st: '080000', et: '143500' }
         };
 
-        function updateInvitePreview() {
-            const nameInput = document.getElementById('childName').value.trim() || 'Child';
-            const gradeKey = document.getElementById('childGrade').value;
-            const config = gradeConfigs[gradeKey];
-            const title = `${nameInput}'s ${config.label}`;
-            document.getElementById('titlePreviewText').innerText = title;
+        function addChildRow() {
+            const container = document.getElementById('childrenContainer');
+            const newRow = document.createElement('div');
+            newRow.className = 'child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative mt-3';
+            newRow.innerHTML = `
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
+                        <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="e.g. Jackson">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Grade Level</label>
+                        <select class="child-grade w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
+                            <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
+                            <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
+                            <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
+                            <option value="1st">1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                            <option value="2nd">2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                            <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                            <option value="4th_5th" selected>4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
+                            <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="this.parentElement.remove()" class="text-xs text-red-600 hover:text-red-800 font-semibold mt-2 underline">Remove</button>
+            `;
+            container.appendChild(newRow);
         }
 
-        document.getElementById('childName').addEventListener('input', updateInvitePreview);
-        document.getElementById('childGrade').addEventListener('change', updateInvitePreview);
-
-        function addCustomChildToGoogle() {
-            const nameInput = document.getElementById('childName').value.trim() || 'Child';
-            const gradeKey = document.getElementById('childGrade').value;
-            const config = gradeConfigs[gradeKey];
+        function syncCombinedGoogle() {
+            const rows = document.querySelectorAll('.child-row');
+            let titles = [];
+            let detailsList = [];
             
-            const title = encodeURIComponent(`${nameInput}'s ${config.label}`);
-            const details = encodeURIComponent(`Vista Del Mar Elementary School Bell Schedule for ${nameInput}:\n\nRegular Schedule: ${config.text}\nLocation: Vista Del Mar Elementary School\n\nAutomated by VdM Mako Community Hub.`);
+            rows.forEach(row => {
+                const name = row.querySelector('.child-name').value.trim() || 'Child';
+                const gradeKey = row.querySelector('.child-grade').value;
+                const config = gradeConfigs[gradeKey];
+                titles.push(`${name}'s ${config.label}`);
+                detailsList.push(`• ${name} (${config.label}): ${config.text}`);
+            });
+            
+            const combinedTitle = encodeURIComponent(titles.join(' & '));
+            const detailsText = encodeURIComponent(`Vista Del Mar Family Schedule:\n\n` + detailsList.join('\n') + `\n\nLocation: Vista Del Mar Elementary School\nAutomated by VdM Mako Hub.`);
             const location = encodeURIComponent('Vista Del Mar Elementary School, San Clemente, CA');
             
             const startDate = '20260818';
-            const datesParam = `${startDate}T${config.st}/${startDate}T${config.et}`;
-            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${datesParam}&details=${details}&location=${location}&recur=RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`;
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${combinedTitle}&dates=${startDate}T080000/${startDate}T140500&details=${detailsText}&location=${location}&recur=RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`;
             
             window.open(googleUrl, '_blank');
+        }
+
+        function syncCombinedApple() {
+            const webcalUrl = 'webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics';
+            window.location.href = webcalUrl;
+        }
+
+        function submitPromptEmail() {
+            const subject = encodeURIComponent("Mako Mom - AI suggestion");
+            const body = encodeURIComponent("Hi Nicole,\n\nHere is my AI prompt or life hack suggestion:\n\nPrompt Title: \nPrompt / Idea Details: \n\nFrom a Mako Parent");
+            window.location.href = `mailto:mattandnicolepaul@gmail.com?subject=${subject}&body=${body}`;
+        }
+
+        function sponsorInquiryEmail() {
+            const subject = encodeURIComponent("Mako Hub - Sponsorship / Ad Inquiry");
+            const body = encodeURIComponent("Hi Nicole,\n\nI am interested in sponsoring or advertising my business on the Vista Del Mar Mako Community Hub.\n\nBusiness Name:\nContact Phone:\nMessage Details:");
+            window.location.href = `mailto:mattandnicolepaul@gmail.com?subject=${subject}&body=${body}`;
+        }
+
+        function consultInquiryEmail() {
+            const subject = encodeURIComponent("Mako Hub - AI Consultation Inquiry");
+            const body = encodeURIComponent("Hi Nicole,\n\nI would like to schedule a consultation with you regarding custom AI prompts, calendar automation, or digital workflows.\n\nName:\nTopic / Goal:\nPreferred Contact Method:");
+            window.location.href = `mailto:mattandnicolepaul@gmail.com?subject=${subject}&body=${body}`;
         }
 
         function switchTab(tabId) {
@@ -661,11 +716,23 @@
         function openInGemini(button) {
             const card = button.closest('.prompt-card');
             const promptText = card.querySelector('.select-all').innerText.trim();
-            const geminiUrl = `https://gemini.google.com/app?prompt=${encodeURIComponent(promptText)}`;
-            window.open(geminiUrl, '_blank');
+            
+            // Auto-copy prompt to clipboard first, then open Gemini tab!
+            navigator.clipboard.writeText(promptText).then(() => {
+                const originalText = button.innerText;
+                button.innerText = 'Copied! Opening Gemini...';
+                button.classList.replace('bg-purple-50', 'bg-green-50');
+                button.classList.replace('text-purple-700', 'text-green-700');
+                
+                window.open('https://gemini.google.com/app', '_blank');
+                
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.replace('bg-green-50', 'bg-purple-50');
+                    button.classList.replace('text-green-700', 'text-purple-700');
+                }, 2500);
+            });
         }
-
-        document.addEventListener('DOMContentLoaded', updateInvitePreview);
     </script>
 </body>
 </html>
