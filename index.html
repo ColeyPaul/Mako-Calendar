@@ -131,71 +131,108 @@
         <!-- TAB 1: SCHOOL CALENDAR & BELL SCHEDULE -->
         <div id="calendar-tab" class="tab-content active">
 
-            <!-- Multi-Child Custom Calendar Sync Builder -->
+            <!-- 2-STEP CALENDAR SYNC SECTION -->
             <section class="mb-10 max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200">
-                <div class="text-center mb-6">
+                <div class="text-center mb-8">
                     <h2 class="text-xl md:text-2xl font-bold text-gray-900">Customize your Family Mako Calendar</h2>
                     <p class="text-xs md:text-sm text-gray-600 mt-2 leading-relaxed max-w-lg mx-auto">
-                        Add your children's bell schedule, and sync everything together in 1 click with the main holiday calendar. Includes all 22 Capo USD school holidays, minimum days, and events sent to mako messenger + your kids' bell schedules (automatically skipping breaks)
+                        Follow the 2 simple steps below to get live scraped school updates + your children's custom bell schedules!
                     </p>
                 </div>
 
-                <!-- Invite Style Preference -->
-                <div class="mb-6 bg-slate-50 p-4 rounded-lg border border-slate-200 max-w-lg mx-auto">
-                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Select Invite Style</label>
-                    <div class="space-y-2 text-xs font-medium text-gray-800">
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="inviteStyle" value="combined" checked class="text-sky-600 focus:ring-sky-500">
-                            <span>Combined Invite for Drop-off & Dismissal</span>
-                        </label>
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="radio" name="inviteStyle" value="separate" class="text-sky-600 focus:ring-sky-500">
-                            <span>Separate Invites for each Child per Day</span>
-                        </label>
+                <!-- STEP 1: LIVE AUTO-SYNCED MASTER CALENDAR -->
+                <div class="mb-8 p-5 bg-sky-50/70 rounded-xl border border-sky-200">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-6 h-6 rounded-full bg-sky-700 text-white font-bold text-xs flex items-center justify-center">1</span>
+                        <h3 class="font-bold text-sky-950 text-sm md:text-base">Subscribe to Live Master Mako Calendar</h3>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-4 leading-relaxed pl-8">
+                        Auto-syncs continuously on your phone/computer with all scraped Mako Messenger newsletters, principal emails, PTA events, minimum days, and Capo USD school holidays in real time!
+                    </p>
+                    <div class="pl-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com" target="_blank" class="button-primary py-2.5 px-4 rounded-lg font-semibold text-xs text-center shadow-sm block">
+                            Subscribe on Google Calendar
+                        </a>
+                        <a href="webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics" class="button-secondary py-2.5 px-4 rounded-lg font-semibold text-xs text-center block">
+                            Subscribe on Apple / iCal
+                        </a>
                     </div>
                 </div>
 
-                <!-- Children Container -->
-                <div id="childrenContainer" class="space-y-4 max-w-lg mx-auto mb-4">
-                    <!-- Child 1 Row -->
-                    <div class="child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
-                                <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="Insert child name here" value="">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Grade Level</label>
-                                <select class="child-grade w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
-                                    <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
-                                    <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
-                                    <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
-                                    <option value="1st">1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                                    <option value="2nd" selected>2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                                    <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                                    <option value="4th_5th">4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
-                                    <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
-                                </select>
+                <!-- STEP 2: CUSTOM FAMILY BELL SCHEDULE BUILDER -->
+                <div class="p-5 bg-slate-50 rounded-xl border border-slate-200">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="w-6 h-6 rounded-full bg-slate-700 text-white font-bold text-xs flex items-center justify-center">2</span>
+                        <h3 class="font-bold text-slate-900 text-sm md:text-base">Add Your Kids' Custom Bell Schedule</h3>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-4 leading-relaxed pl-8">
+                        Add your children below for personalized drop-off and dismissal reminders. Built 100% privately in your browser for your family only — automatically skipping all school breaks!
+                    </p>
+
+                    <!-- Invite Style Preference -->
+                    <div class="mb-4 pl-8">
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Select Invite Style</label>
+                        <div class="space-y-2 text-xs font-medium text-gray-800">
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="radio" name="inviteStyle" value="combined" checked class="text-sky-600 focus:ring-sky-500">
+                                <span>Combined Invite for Drop-off & Dismissal</span>
+                            </label>
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="radio" name="inviteStyle" value="separate" class="text-sky-600 focus:ring-sky-500">
+                                <span>Separate Invites for each Child per Day</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Children Container -->
+                    <div id="childrenContainer" class="space-y-4 pl-8 mb-4">
+                        <!-- Child 1 Row -->
+                        <div class="child-row bg-white p-4 rounded-lg border border-slate-200 relative shadow-sm">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
+                                    <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="Insert child name here" value="">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Grade Level</label>
+                                    <select class="child-grade w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
+                                        <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
+                                        <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
+                                        <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
+                                        <option value="1st">1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                                        <option value="2nd" selected>2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                                        <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                                        <option value="4th_5th">4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
+                                        <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Add Another Child Button -->
+                    <div class="pl-8 mb-6 flex justify-start items-center">
+                        <button onclick="addChildRow()" class="text-xs font-semibold text-sky-700 hover:text-sky-900 underline flex items-center">
+                            + Add Another Child
+                        </button>
+                    </div>
+
+                    <!-- Action Buttons for Step 2 -->
+                    <div class="pl-8 space-y-2 pt-2 border-t border-slate-200">
+                        <button onclick="downloadCustomICS()" class="w-full button-primary py-3 px-4 rounded-lg font-semibold text-xs shadow-sm flex items-center justify-center">
+                            Add Bell Schedule to Apple Calendar
+                        </button>
+                        <button onclick="syncCombinedGoogle()" class="w-full button-secondary py-3 px-4 rounded-lg font-semibold text-xs flex items-center justify-center">
+                            Add Bell Schedule to Google Calendar
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Add Another Child Button -->
-                <div class="max-w-lg mx-auto mb-6 flex justify-start items-center">
-                    <button onclick="addChildRow()" class="text-xs font-semibold text-sky-700 hover:text-sky-900 underline flex items-center">
-                        + Add Another Child
-                    </button>
-                </div>
-
-                <!-- Simple Clean Action Buttons -->
-                <div class="max-w-lg mx-auto space-y-3 pt-2 border-t border-gray-100">
-                    <button onclick="downloadCustomICS()" class="w-full button-primary py-3.5 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
-                        Add to Apple Calendar
-                    </button>
-                    <button onclick="syncCombinedGoogle()" class="w-full button-secondary py-3.5 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
-                        Add to Google Calendar
-                    </button>
+                <!-- Privacy Guarantee Note -->
+                <div class="mt-6 p-3 bg-emerald-50 rounded-lg border border-emerald-200 text-center max-w-lg mx-auto">
+                    <p class="text-xs text-emerald-900 font-medium leading-relaxed">
+                        🔒 <strong>100% Private & Clean:</strong> Your child names and grade selections are built privately inside your browser for your family only. Other parents will never see your kids' schedules, and your calendar stays completely clean!
+                    </p>
                 </div>
             </section>
 
@@ -456,8 +493,6 @@
                     </div>
                 </div>
 
-
-
                 <!-- Group 4: Browser AI Skills Guide -->
                 <div class="max-w-4xl mx-auto bg-slate-50 p-5 rounded-xl border border-slate-200">
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -565,7 +600,7 @@
         function addChildRow() {
             const container = document.getElementById('childrenContainer');
             const newRow = document.createElement('div');
-            newRow.className = 'child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative mt-3';
+            newRow.className = 'child-row bg-white p-4 rounded-lg border border-slate-200 relative mt-3 shadow-sm';
             newRow.innerHTML = `
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -646,9 +681,8 @@
                 `PRODID:-//Vista Del Mar Mako Community Hub//EN\r\n` +
                 `CALSCALE:GREGORIAN\r\n` +
                 `METHOD:PUBLISH\r\n` +
-                `X-WR-CALNAME:Vista Del Mar Master & Family Calendar\r\n` +
+                `X-WR-CALNAME:Vista Del Mar Family Bell Schedule\r\n` +
                 `X-WR-TIMEZONE:America/Los_Angeles\r\n` +
-                masterSchoolEventsICS + '\r\n' +
                 childEvents.join('\r\n') + '\r\n' +
                 `END:VCALENDAR`;
         }
@@ -658,13 +692,12 @@
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
             if (isIOS) {
-                // On iPhone / iPad, data URI immediately triggers native Apple Calendar import modal
                 window.location.href = 'data:text/calendar;charset=utf8,' + encodeURIComponent(icsData);
             } else {
                 const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8;' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
-                link.setAttribute('download', 'vista_del_mar_master_and_family_calendar.ics');
+                link.setAttribute('download', 'vista_del_mar_family_bell_schedule.ics');
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -672,7 +705,14 @@
         }
 
         function syncCombinedGoogle() {
-            downloadCustomICS();
+            const icsData = generateCombinedICSString();
+            const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('download', 'vista_del_mar_family_bell_schedule.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
             setTimeout(() => {
                 window.open('https://calendar.google.com/calendar/r/settings/export', '_blank');
             }, 800);
