@@ -172,7 +172,7 @@
                 <div id="childrenContainer" class="space-y-4 max-w-lg mx-auto mb-4">
                     <!-- Child 1 Row -->
                     <div class="child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative">
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
                                 <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="Insert child name here" value="">
@@ -188,18 +188,6 @@
                                     <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
                                     <option value="4th_5th">4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
                                     <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Calendar Color</label>
-                                <select class="child-color w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
-                                    <option value="#4285f4" selected>🔵 Blue (Cobalt)</option>
-                                    <option value="#039be5">🩵 Peacock (Sky)</option>
-                                    <option value="#8e24aa">🟣 Grape (Purple)</option>
-                                    <option value="#0b8043">🟢 Basil (Green)</option>
-                                    <option value="#e67c73">🔴 Flamingo (Red)</option>
-                                    <option value="#f4511e">🟠 Tangerine (Orange)</option>
-                                    <option value="#f6bf26">🟡 Banana (Yellow)</option>
                                 </select>
                             </div>
                         </div>
@@ -626,7 +614,7 @@
             const newRow = document.createElement('div');
             newRow.className = 'child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative mt-3';
             newRow.innerHTML = `
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
                         <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="Insert child name here" value="">
@@ -644,18 +632,6 @@
                             <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
                         </select>
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Calendar Color</label>
-                        <select class="child-color w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
-                            <option value="#4285f4">🔵 Blue (Cobalt)</option>
-                            <option value="#039be5">🩵 Peacock (Sky)</option>
-                            <option value="#8e24aa" selected>🟣 Grape (Purple)</option>
-                            <option value="#0b8043">🟢 Basil (Green)</option>
-                            <option value="#e67c73">🔴 Flamingo (Red)</option>
-                            <option value="#f4511e">🟠 Tangerine (Orange)</option>
-                            <option value="#f6bf26">🟡 Banana (Yellow)</option>
-                        </select>
-                    </div>
                 </div>
                 <button onclick="this.parentElement.remove()" class="text-xs text-red-600 hover:text-red-800 font-semibold mt-2 underline">Remove</button>
             `;
@@ -670,7 +646,6 @@
             rows.forEach((row, idx) => {
                 const name = row.querySelector('.child-name').value.trim() || `Child ${idx + 1}`;
                 const gradeKey = row.querySelector('.child-grade').value;
-                const colorHex = row.querySelector('.child-color').value;
                 const config = gradeConfigs[gradeKey];
                 
                 const exdateString = exdates.map(d => `EXDATE;TZID=America/Los_Angeles:${d}T${config.st}`).join('\r\n');
@@ -681,8 +656,6 @@
                         `SUMMARY:${name} School Drop-off (8:00 AM)\r\n` +
                         `DESCRIPTION:${name} Drop-off at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
-                        `COLOR:${colorHex}\r\n` +
-                        `X-APPLE-CALENDAR-COLOR:${colorHex}\r\n` +
                         `DTSTART;TZID=America/Los_Angeles:20260818T080000\r\n` +
                         `DTEND;TZID=America/Los_Angeles:20260818T081500\r\n` +
                         `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
@@ -694,8 +667,6 @@
                         `SUMMARY:${name} Dismissal (${config.label})\r\n` +
                         `DESCRIPTION:${name} Dismissal Pickup at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
-                        `COLOR:${colorHex}\r\n` +
-                        `X-APPLE-CALENDAR-COLOR:${colorHex}\r\n` +
                         `DTSTART;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
                         `DTEND;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
                         `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
@@ -708,8 +679,6 @@
                         `SUMMARY:${name}'s ${config.label}\r\n` +
                         `DESCRIPTION:${name} Bell Schedule at Vista Del Mar Elementary School.\\nRegular: ${config.text}\r\n` +
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
-                        `COLOR:${colorHex}\r\n` +
-                        `X-APPLE-CALENDAR-COLOR:${colorHex}\r\n` +
                         `DTSTART;TZID=America/Los_Angeles:20260818T${config.st}\r\n` +
                         `DTEND;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
                         `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
