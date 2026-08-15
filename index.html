@@ -196,7 +196,7 @@
                 <!-- Simple Clean Action Buttons -->
                 <div class="max-w-lg mx-auto space-y-3 pt-2 border-t border-gray-100">
                     <button onclick="downloadCustomICS()" class="w-full button-primary py-3.5 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
-                        Add to Apple / iPhone Calendar (.ics)
+                        Add to Apple Calendar
                     </button>
                     <button onclick="syncCombinedGoogle()" class="w-full button-secondary py-3.5 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
                         Add to Google Calendar
@@ -633,7 +633,7 @@
             container.appendChild(newRow);
         }
 
-        function downloadCustomICS() {
+        function generateCombinedICSString() {
             const rows = document.querySelectorAll('.child-row');
             const style = document.querySelector('input[name="inviteStyle"]:checked').value;
             let childEvents = [];
@@ -683,8 +683,7 @@
                 }
             });
 
-            const fullCombinedICS = 
-                `BEGIN:VCALENDAR\r\n` +
+            return `BEGIN:VCALENDAR\r\n` +
                 `VERSION:2.0\r\n` +
                 `PRODID:-//Vista Del Mar Mako Community Hub//EN\r\n` +
                 `CALSCALE:GREGORIAN\r\n` +
@@ -694,18 +693,27 @@
                 masterSchoolEventsICS + '\r\n' +
                 childEvents.join('\r\n') + '\r\n' +
                 `END:VCALENDAR`;
+        }
 
-            const blob = new Blob([fullCombinedICS], { type: 'text/calendar;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.setAttribute('download', 'vista_del_mar_master_and_family_calendar.ics');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+        function downloadCustomICS() {
+            const icsData = generateCombinedICSString();
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+            if (isIOS) {
+                // On iPhone / iPad, data URI immediately triggers native Apple Calendar import modal
+                window.location.href = 'data:text/calendar;charset=utf8,' + encodeURIComponent(icsData);
+            } else {
+                const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8;' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.setAttribute('download', 'vista_del_mar_master_and_family_calendar.ics');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
         }
 
         function syncCombinedGoogle() {
-            // Generates custom ICS download & opens Google Calendar import settings so user gets BOTH Master Calendar + Kids Schedules!
             downloadCustomICS();
             setTimeout(() => {
                 window.open('https://calendar.google.com/calendar/r/settings/export', '_blank');
