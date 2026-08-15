@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista Del Mar TK & 2nd Grade Mako Calendar</title>
+    <title>Vista Del Mar Mako Hub & AI Parent Toolkit</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -27,9 +27,20 @@
             background-color: #2b5575;
             transform: translateY(-1px);
         }
-        .form-bg {
-            background-color: #fefefe;
-            border: 1px solid #dbeafe;
+        .tab-button {
+            transition: all 0.2s ease;
+        }
+        .tab-button.active {
+            background-color: #36678d;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
         }
         .calendar-container {
             position: relative;
@@ -84,6 +95,17 @@
         .accordion-icon.rotate {
             transform: rotate(90deg);
         }
+        .prompt-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .prompt-card:hover {
+            border-color: #93c5fd;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
         .badge {
             display: inline-flex;
             align-items: center;
@@ -96,131 +118,335 @@
 </head>
 <body class="antialiased">
     <!-- Header -->
-    <div class="header-bg py-8 shadow-md rounded-b-xl mb-8">
+    <div class="header-bg py-8 shadow-md rounded-b-xl mb-6">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
             <img src="https://schoolmanager.s3.amazonaws.com/uploads/pictures/25fc030945e24d4498604749accee590.png"
                  alt="VdM Mako Sharks Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-6 shadow-lg border-2 border-white">
             <div class="max-w-xl">
-                <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
-                    <span class="badge bg-green-100 text-green-800 border border-green-300">
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300">
                         <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
-                        Automated Sync Active
+                        Auto-Sync Active
+                    </span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300">
+                        ✨ Custom Child Calendar Sync
                     </span>
                 </div>
-                <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Vista del Mar Community Calendar</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Vista del Mar Community Hub</h1>
                 <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-                    Your unofficial, community-managed hub for Mako school events, holidays, class parties, and minimum days—automated for TK (Early Birds), 2nd Grade, and all Mako families.
+                    Your community hub for Mako school calendars, personalized child bell schedules, and AI-powered life hacks to eliminate parental mental load.
                 </p>
             </div>
         </div>
     </div>
 
-    <main class="container mx-auto px-4 py-4">
-        <!-- Intro Banner -->
-        <div class="text-gray-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-center">
-            <p class="mb-4 font-semibold text-sky-900 text-xl">
-                Just Keep Calm and Calendar On...
-            </p>
-            <p class="mb-4">
-                Managing schedules for TK Early Birds and 2nd Grade? We combine AI email automation with community updates to keep your family schedule seamlessly in sync.
-            </p>
+    <main class="container mx-auto px-4 py-2">
+        <!-- Navigation Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mb-8 bg-sky-100/60 p-1.5 rounded-xl max-w-2xl mx-auto border border-sky-200">
+            <button onclick="switchTab('calendar-tab')" id="btn-calendar-tab" class="tab-button active py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
+                📅 School Calendar & Bell Schedule
+            </button>
+            <button onclick="switchTab('ai-mom-tab')" id="btn-ai-mom-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
+                ✨ AI Toolkit & Life Hacks for Moms
+            </button>
+            <button onclick="switchTab('submit-tab')" id="btn-submit-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
+                📝 Submit Event
+            </button>
         </div>
 
-        <!-- 🔔 TK & 2nd Grade Bell Schedule Hub -->
-        <section class="mb-10 max-w-3xl mx-auto bg-white rounded-xl shadow-md border border-sky-100 p-6">
-            <div class="flex items-center justify-between border-b border-gray-100 pb-3 mb-6">
-                <h2 class="text-xl font-bold text-gray-800 flex items-center">
-                    <span class="mr-2">🔔</span> Bell Schedule Quick Reference
-                </h2>
-                <span class="text-xs bg-sky-100 text-sky-800 font-semibold px-2.5 py-1 rounded-md">2025–2026</span>
+        <!-- TAB 1: SCHOOL CALENDAR & BELL SCHEDULE -->
+        <div id="calendar-tab" class="tab-content active">
+            <!-- Intro Banner -->
+            <div class="text-gray-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-center">
+                <p class="mb-2 font-semibold text-sky-900 text-xl">
+                    Just Keep Calm and Calendar On...
+                </p>
+                <p class="text-sm md:text-base text-gray-600">
+                    No more digging through Capo USD PDFs or scrolling through Mako Messenger Smore newsletters. AI automation keeps your family calendar up-to-date in one click.
+                </p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- TK Early Birds -->
-                <div class="bg-purple-50/60 p-4 rounded-lg border border-purple-100">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-bold text-purple-900 text-base">TK (Early Birds)</h3>
-                        <span class="text-xs bg-purple-200 text-purple-800 font-bold px-2 py-0.5 rounded">TK</span>
-                    </div>
-                    <ul class="text-sm space-y-1.5 text-gray-700">
-                        <li class="flex justify-between"><span>Instruction Begins:</span> <span class="font-semibold text-gray-900">8:00 AM</span></li>
-                        <li class="flex justify-between"><span>Regular Dismissal:</span> <span class="font-bold text-purple-900">11:20 AM</span></li>
-                        <li class="flex justify-between pt-1 border-t border-purple-200"><span class="font-medium text-amber-800">Minimum Day Dismissal:</span> <span class="font-bold text-amber-900">11:20 AM</span></li>
-                    </ul>
+
+            <!-- 🎯 NEW: Personalized Child Bell Schedule Builder -->
+            <section class="mb-10 max-w-2xl mx-auto bg-gradient-to-br from-white to-sky-50 p-6 md:p-8 rounded-xl shadow-lg border border-sky-200">
+                <div class="text-center mb-6">
+                    <span class="badge bg-sky-100 text-sky-800 border border-sky-300 mb-2">
+                        ✨ Add Personalized Schedule per Child
+                    </span>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-800">Add Child's Bell Schedule to Calendar</h2>
+                    <p class="text-xs md:text-sm text-gray-600 mt-1">
+                        Type your child's name and pick their grade level to generate a custom calendar sync invite!
+                    </p>
                 </div>
 
-                <!-- 2nd Grade -->
-                <div class="bg-emerald-50/60 p-4 rounded-lg border border-emerald-100">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="font-bold text-emerald-900 text-base">2nd Grade</h3>
-                        <span class="text-xs bg-emerald-200 text-emerald-800 font-bold px-2 py-0.5 rounded">2nd</span>
+                <div class="space-y-4 max-w-lg mx-auto">
+                    <!-- Child Name Input -->
+                    <div>
+                        <label for="childName" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child's Name</label>
+                        <input type="text" id="childName" placeholder="e.g. Benny or Jackson" value="Benny" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-sm font-medium text-gray-800 shadow-sm">
                     </div>
-                    <ul class="text-sm space-y-1.5 text-gray-700">
-                        <li class="flex justify-between"><span>Instruction Begins:</span> <span class="font-semibold text-gray-900">8:00 AM</span></li>
-                        <li class="flex justify-between"><span>Regular Dismissal:</span> <span class="font-bold text-emerald-900">2:05 PM</span></li>
-                        <li class="flex justify-between pt-1 border-t border-emerald-200"><span class="font-medium text-amber-800">Minimum Day Dismissal:</span> <span class="font-bold text-amber-900">12:45 PM</span></li>
-                    </ul>
+
+                    <!-- Grade Selector Dropdown -->
+                    <div>
+                        <label for="childGrade" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Select Grade Level</label>
+                        <select id="childGrade" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 text-sm font-medium text-gray-800 shadow-sm bg-white">
+                            <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
+                            <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
+                            <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
+                            <option value="1st">1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                            <option value="2nd" selected>2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                            <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                            <option value="4th_5th">4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
+                            <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
+                        </select>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                        <button onclick="addCustomChildToGoogle()" class="flex-1 button-primary py-3 px-4 rounded-lg font-semibold text-sm shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-400 flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                            Sync to Google Calendar
+                        </button>
+                    </div>
+
+                    <p id="invitePreview" class="text-xs text-center text-sky-800 font-medium bg-sky-100/80 p-2 rounded border border-sky-200">
+                        Preview Invite Title: <span id="titlePreviewText" class="font-bold">Benny's TK Bell Schedule</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Bell Schedule Quick Reference Cards -->
+            <section class="mb-10 max-w-3xl mx-auto bg-white rounded-xl shadow-md border border-sky-100 p-6">
+                <div class="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
+                    <h2 class="text-xl font-bold text-gray-800 flex items-center">
+                        <span class="mr-2">🔔</span> Bell Schedule Reference Cards
+                    </h2>
+                    <span class="text-xs bg-sky-100 text-sky-800 font-semibold px-2.5 py-1 rounded-md">2025–2026</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- TK Early Birds -->
+                    <div class="bg-purple-50/60 p-4 rounded-lg border border-purple-100">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-purple-900 text-base">TK (Early Birds)</h3>
+                            <span class="text-xs bg-purple-200 text-purple-800 font-bold px-2 py-0.5 rounded">TK</span>
+                        </div>
+                        <ul class="text-sm space-y-1.5 text-gray-700">
+                            <li class="flex justify-between"><span>Instruction Begins:</span> <span class="font-semibold text-gray-900">8:00 AM</span></li>
+                            <li class="flex justify-between"><span>Regular Dismissal:</span> <span class="font-bold text-purple-900">11:20 AM</span></li>
+                            <li class="flex justify-between pt-1 border-t border-purple-200"><span class="font-medium text-amber-800">Minimum Day Dismissal:</span> <span class="font-bold text-amber-900">11:20 AM</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- 2nd Grade -->
+                    <div class="bg-emerald-50/60 p-4 rounded-lg border border-emerald-100">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-emerald-900 text-base">2nd Grade</h3>
+                            <span class="text-xs bg-emerald-200 text-emerald-800 font-bold px-2 py-0.5 rounded">2nd</span>
+                        </div>
+                        <ul class="text-sm space-y-1.5 text-gray-700">
+                            <li class="flex justify-between"><span>Instruction Begins:</span> <span class="font-semibold text-gray-900">8:00 AM</span></li>
+                            <li class="flex justify-between"><span>Regular Dismissal:</span> <span class="font-bold text-emerald-900">2:05 PM</span></li>
+                            <li class="flex justify-between pt-1 border-t border-emerald-200"><span class="font-medium text-amber-800">Minimum Day Dismissal:</span> <span class="font-bold text-amber-900">12:45 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-4 text-center">💡 Drop-off is 8:00 AM for both TK & 2nd Grade!</p>
+            </section>
+
+            <!-- Sync CTA Buttons for Shared Calendar -->
+            <section class="text-center mb-12 bg-white p-6 rounded-xl shadow-md border border-sky-100 max-w-2xl mx-auto">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-2">Sync the Whole-School Mako Calendar</h2>
+                <p class="text-gray-600 max-w-xl mx-auto mb-6 text-sm md:text-base">
+                    Click below to auto-sync all shared Mako school events, holidays, and minimum days directly to your phone.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com" target="_blank" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                        Add Shared Google Calendar
+                    </a>
+                    <a href="webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.54c.64-.78 1.07-1.85.95-2.92-.92.04-2.04.62-2.7 1.39-.59.68-1.1 1.77-.96 2.82 1.04.08 2.07-.51 2.71-1.29z"/></svg>
+                        Add to Apple / Outlook (iCal)
+                    </a>
+                </div>
+            </section>
+
+            <!-- Embedded Google Calendar -->
+            <section class="mb-12">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4 text-center">Mako Community Calendar at a Glance</h2>
+                <div class="calendar-container shadow-xl rounded-lg border border-sky-200">
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23f0f9ff&ctz=America%2FLos_Angeles&src=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4%40group.calendar.google.com&color=%2336678d&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 2: AI TOOLKIT & LIFE HACKS FOR MOMS -->
+        <div id="ai-mom-tab" class="tab-content">
+            <div class="text-center mb-8 max-w-2xl mx-auto">
+                <span class="badge bg-purple-100 text-purple-800 border border-purple-300 mb-2">
+                    💡 Parents & Caregivers AI Hub
+                </span>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">AI Prompts & Life Hacks for Busy Moms</h2>
+                <p class="text-gray-600 text-sm md:text-base">
+                    Tested AI prompts to offload mental load, eliminate dinner fatigue, sift school emails, and design stress-free morning & bedtime routines.
+                </p>
+            </div>
+
+            <!-- Prompts Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+                <!-- 1. Invisible Mental Load Dump -->
+                <div class="prompt-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-bold text-gray-800 flex items-center">
+                            <span class="mr-2 text-xl">🧠</span> Invisible Mental Load Dump
+                        </h3>
+                        <span class="text-xs bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-medium">Organization</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                        Audit mental clutter into automated tasks, delegation scripts, and a low-stress schedule.
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                        "I am carrying a heavy mental load. Here is a brain dump of what is in my head: [insert bullet points]. Please audit this list and deliver: (1) what I can systemize or automate, (2) what I can delegate, (3) what can wait for next week, and (4) a realistic, low-stress schedule for the rest."
+                    </div>
+                    <button onclick="copyText(this)" class="w-full py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                        📋 Copy Prompt
+                    </button>
+                </div>
+
+                <!-- 2. School Email Sifter -->
+                <div class="prompt-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-bold text-gray-800 flex items-center">
+                            <span class="mr-2 text-xl">🏫</span> School Email & Newsletter Sifter
+                        </h3>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-medium">School Comms</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                        Instantly extracts dates, backpack checklists, and permission slip deadlines from long newsletters.
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                        "I am going to paste a long school newsletter/email chain. Extract all key actions and organize them into a clear table with columns: Date, Event, Affected Child, Action Required, and Deadline. Also provide a 'Backpack Checklist' of physical items needed."
+                    </div>
+                    <button onclick="copyText(this)" class="w-full py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                        📋 Copy Prompt
+                    </button>
+                </div>
+
+                <!-- 3. Dinner Decision-Maker -->
+                <div class="prompt-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-bold text-gray-800 flex items-center">
+                            <span class="mr-2 text-xl">🍔</span> Dinner Decision-Maker (Zero-Waste)
+                        </h3>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">Meal Prep</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                        Creates a 5-day weeknight dinner plan under 30 minutes active prep time with deconstructed options for picky eaters.
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                        "Act as a zero-waste family chef. Create a 5-day dinner plan for [2 adults and 2 kids]. Keep prep under 30 minutes, use overlapping ingredients to eliminate food waste, provide 'deconstructed' options for picky eaters, and generate a categorized grocery list."
+                    </div>
+                    <button onclick="copyText(this)" class="w-full py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                        📋 Copy Prompt
+                    </button>
+                </div>
+
+                <!-- 4. Calm Morning Systemizer -->
+                <div class="prompt-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-bold text-gray-800 flex items-center">
+                            <span class="mr-2 text-xl">☀️</span> Morning Routine Systemizer
+                        </h3>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">Routines</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                        Builds backwards-mapped morning timelines with visual checklists and a 15-minute emergency buffer.
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                        "Design a calm morning routine for a family with kids aged [ages] who need to leave by [time]. Build a backwards-mapped timeline by zones, include non-verbal visual cues to replace nagging, and add a 15-minute emergency 'running late' backup plan."
+                    </div>
+                    <button onclick="copyText(this)" class="w-full py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                        📋 Copy Prompt
+                    </button>
+                </div>
+
+                <!-- 5. Bedtime Storyteller Gem -->
+                <div class="prompt-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-bold text-gray-800 flex items-center">
+                            <span class="mr-2 text-xl">📖</span> Bedtime Storyteller & Wind-Down
+                        </h3>
+                        <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-medium">Bedtime</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                        Tailors personalized bedtime stories featuring your kids' names and interests with sensory dimming wind-down scripts.
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                        "Act as a gentle bedtime storyteller for [child names, ages]. Create a calm 5-minute story incorporating their interests [interests], starting with an engaging hook, concrete sensory details, a soothing wrap-up fact, and quiet audio playback tone."
+                    </div>
+                    <button onclick="copyText(this)" class="w-full py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                        📋 Copy Prompt
+                    </button>
+                </div>
+
+                <!-- 6. Homework & Analogy Helper -->
+                <div class="prompt-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-bold text-gray-800 flex items-center">
+                            <span class="mr-2 text-xl">📚</span> Creative Homework Analogy Helper
+                        </h3>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Learning</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                        Explains tough homework concepts (math/science) using fun real-world analogies (pizza, LEGOs, dinosaurs).
+                    </p>
+                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                        "Explain [topic, e.g. fractions or photosynthesis] to my [age]-year-old. Use a fun real-world analogy tied to their passion [e.g. soccer, LEGO, baking] and provide 3 screen-free hands-on tactile activities we can do at home."
+                    </div>
+                    <button onclick="copyText(this)" class="w-full py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                        📋 Copy Prompt
+                    </button>
                 </div>
             </div>
-            <p class="text-xs text-gray-500 mt-4 text-center">Drop-off is 8:00 AM for both TK & 2nd Grade!</p>
-        </section>
 
-        <!-- How it works Accordion -->
-        <section class="mb-8 max-w-2xl mx-auto rounded-lg shadow-md">
-            <div class="accordion-header" id="howItWorksHeader">
-                <span>Here’s how automated updates work:</span>
-                <span class="accordion-icon">&#9658;</span>
-            </div>
-            <div class="accordion-content" id="howItWorksContent">
-                <ul class="list-disc list-inside text-left mx-auto space-y-2 text-gray-700">
-                    <li><span class="font-semibold text-gray-900">Automated Newsletter & Email Ingestion:</span> Parses official emails from Capo USD (<code>MJGEIGER@capousd.org</code>, <code>VLSCHERER@capousd.org</code>, <code>noreply@capousd.org</code>, and <code>vdmptapresident-gmail.com@shared1.ccsend.com</code>) and Smore links.</li>
-                    <li><span class="font-semibold text-gray-900">Event Standardizations:</span> Extracted dates for Minimum Days, Dress-up Days, Book Fairs, and PTA events are converted into structured calendar events.</li>
-                    <li><span class="font-semibold text-gray-900">Instant Personal Sync:</span> When added to your personal calendar (Google, Apple, or Outlook), updates automatically appear on your phone or computer.</li>
-                    <li><span class="font-semibold text-gray-900">Community Contributions:</span> Anyone can submit missing room parent or class party events using the form below.</li>
-                </ul>
-            </div>
-        </section>
+            <!-- Recommended AI Tools for Families -->
+            <section class="bg-white p-6 rounded-xl shadow-md border border-purple-100 max-w-4xl mx-auto mb-12">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                    <span class="mr-2">📱</span> Recommended AI Tools for Families
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                    <div class="p-3 bg-purple-50/50 rounded-lg border border-purple-100">
+                        <h4 class="font-semibold text-purple-900 mb-1">PinwheelGPT</h4>
+                        <p class="text-xs text-gray-600">Safe kid-friendly AI tutor that filters mature content & lets parents view chat logs.</p>
+                    </div>
+                    <div class="p-3 bg-blue-50/50 rounded-lg border border-blue-100">
+                        <h4 class="font-semibold text-blue-900 mb-1">Gemini for Children</h4>
+                        <p class="text-xs text-gray-600">Google assistant controls under Family Link for safe research and homework support.</p>
+                    </div>
+                    <div class="p-3 bg-emerald-50/50 rounded-lg border border-emerald-100">
+                        <h4 class="font-semibold text-emerald-900 mb-1">Bedtimestory.ai</h4>
+                        <p class="text-xs text-gray-600">AI story generator creating illustrated personalized bedtime stories for kids.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-        <!-- Sync CTA Buttons -->
-        <section class="text-center mb-12 bg-white p-6 rounded-xl shadow-md border border-sky-100 max-w-2xl mx-auto">
-            <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-2">Never Miss an Event!</h2>
-            <p class="text-gray-600 max-w-xl mx-auto mb-6 text-sm md:text-base">
-                Click below to auto-sync the Mako Community Calendar directly to your device.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com" target="_blank" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
-                    Add to Google Calendar
+        <!-- TAB 3: SUBMIT EVENT -->
+        <div id="submit-tab" class="tab-content">
+            <section class="form-bg p-6 md:p-8 rounded-xl shadow-xl mb-12 text-center max-w-2xl mx-auto border border-blue-100">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3">Add a Mako Community Calendar Event</h2>
+                <p class="text-gray-600 text-sm md:text-base mb-6">
+                    Planning a TK Early Birds or 2nd Grade class party, room parent event, or noticed a missing school date? Submit your event details below to be reviewed and added to the official calendar.
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="inline-block button-primary py-3 px-8 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                    Submit Event Details
                 </a>
-                <a href="webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.54c.64-.78 1.07-1.85.95-2.92-.92.04-2.04.62-2.7 1.39-.59.68-1.1 1.77-.96 2.82 1.04.08 2.07-.51 2.71-1.29z"/></svg>
-                    Add to Apple / Outlook (iCal)
-                </a>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Embedded Google Calendar -->
-        <section class="mb-12">
-            <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4 text-center">Mako Community Calendar at a Glance</h2>
-            <div class="calendar-container shadow-xl rounded-lg border border-sky-200">
-                <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23f0f9ff&ctz=America%2FLos_Angeles&src=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4%40group.calendar.google.com&color=%2336678d&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-            </div>
-        </section>
-
-        <!-- Submit Event Section -->
-        <section class="form-bg p-6 md:p-8 rounded-xl shadow-xl mb-12 text-center max-w-2xl mx-auto border border-blue-100">
-            <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3">Add a Mako Community Calendar Event</h2>
-            <p class="text-gray-600 text-sm md:text-base mb-6">
-                Planning a TK Early Birds or 2nd Grade class party, room parent event, or noticed a missing school date? Submit your event details below.
-            </p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="inline-block button-primary py-3 px-8 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
-                Submit Event Details
-            </a>
-        </section>
-
-        <!-- Contact & Feedback -->
-        <div class="text-center text-gray-600 text-sm max-w-xl mx-auto space-y-2">
+        <!-- Contact & Support -->
+        <div class="text-center text-gray-600 text-sm max-w-xl mx-auto space-y-2 mt-8">
             <p>Questions or suggestions? Contact <a href="mailto:mattandnicolepaul@gmail.com" class="text-sky-700 underline font-medium">mattandnicolepaul@gmail.com</a></p>
             <p class="text-xs text-gray-500">
                 Created by a Mako parent for Vista Del Mar families!
@@ -230,21 +456,76 @@
 
     <footer class="bg-gray-100 py-6 mt-12 rounded-t-xl shadow-inner border-t border-gray-200">
         <div class="container mx-auto px-4 text-center text-gray-600 text-sm">
-            &copy; 2025 Vista Del Mar Mako Sharks Community Calendar — Powered by AI Automation & Mako Parent Community
+            &copy; 2025 Vista Del Mar Mako Sharks Community Hub — Powered by AI Automation & Mako Parent Community
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const header = document.getElementById('howItWorksHeader');
-            const content = document.getElementById('howItWorksContent');
-            const icon = header.querySelector('.accordion-icon');
+        const gradeConfigs = {
+            'tk_early': { label: 'TK Bell Schedule', text: '8:00 AM - 11:20 AM (Minimum Day: 11:20 AM)', st: '080000', et: '112000' },
+            'tk_late': { label: 'TK Late Birds Bell Schedule', text: '9:30 AM - 12:50 PM (Minimum Day: 12:50 PM)', st: '093000', et: '125000' },
+            'k': { label: 'Kindergarten Bell Schedule', text: '8:00 AM - 1:30 PM (Minimum Day: 12:15 PM)', st: '080000', et: '133000' },
+            '1st': { label: '1st Grade Bell Schedule', text: '8:00 AM - 2:05 PM (Minimum Day: 12:45 PM)', st: '080000', et: '140500' },
+            '2nd': { label: '2nd Grade Bell Schedule', text: '8:00 AM - 2:05 PM (Minimum Day: 12:45 PM)', st: '080000', et: '140500' },
+            '3rd': { label: '3rd Grade Bell Schedule', text: '8:00 AM - 2:05 PM (Minimum Day: 12:45 PM)', st: '080000', et: '140500' },
+            '4th_5th': { label: '4th-5th Grade Bell Schedule', text: '8:00 AM - 2:15 PM (Minimum Day: 12:45 PM)', st: '080000', et: '141500' },
+            'middle': { label: 'Middle School Bell Schedule', text: '8:00 AM - 2:35 PM (Minimum Day: 1:15 PM)', st: '080000', et: '143500' }
+        };
 
-            header.addEventListener('click', function() {
-                content.classList.toggle('active');
-                icon.classList.toggle('rotate');
+        function updateInvitePreview() {
+            const nameInput = document.getElementById('childName').value.trim() || 'Child';
+            const gradeKey = document.getElementById('childGrade').value;
+            const config = gradeConfigs[gradeKey];
+            const title = `${nameInput}'s ${config.label}`;
+            document.getElementById('titlePreviewText').innerText = title;
+        }
+
+        document.getElementById('childName').addEventListener('input', updateInvitePreview);
+        document.getElementById('childGrade').addEventListener('change', updateInvitePreview);
+
+        function addCustomChildToGoogle() {
+            const nameInput = document.getElementById('childName').value.trim() || 'Child';
+            const gradeKey = document.getElementById('childGrade').value;
+            const config = gradeConfigs[gradeKey];
+            
+            const title = encodeURIComponent(`${nameInput}'s ${config.label}`);
+            const details = encodeURIComponent(`Vista Del Mar Elementary School Bell Schedule for ${nameInput}:\n\nRegular Schedule: ${config.text}\nLocation: Vista Del Mar Elementary School\n\nAutomated by VdM Mako Community Hub.`);
+            const location = encodeURIComponent('Vista Del Mar Elementary School, San Clemente, CA');
+            
+            // Set date to next school day start date in YYYYMMDDTHHMMSS format
+            const startDate = '20260818';
+            const datesParam = `${startDate}T${config.st}/${startDate}T${config.et}`;
+            
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${datesParam}&details=${details}&location=${location}&recur=RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`;
+            
+            window.open(googleUrl, '_blank');
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+        }
+
+        function copyText(button) {
+            const card = button.closest('.prompt-card');
+            const textToCopy = card.querySelector('.select-all').innerText.trim();
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalText = button.innerText;
+                button.innerText = '✅ Copied!';
+                button.classList.replace('bg-sky-50', 'bg-green-50');
+                button.classList.replace('text-sky-700', 'text-green-700');
+                setTimeout(() => {
+                    button.innerText = originalText;
+                    button.classList.replace('bg-green-50', 'bg-sky-50');
+                    button.classList.replace('text-green-700', 'text-sky-700');
+                }, 2000);
             });
-        });
+        }
+
+        // Initialize preview title on load
+        document.addEventListener('DOMContentLoaded', updateInvitePreview);
     </script>
 </body>
 </html>
