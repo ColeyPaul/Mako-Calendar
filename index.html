@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista Del Mar Mako Hub & AI Parent Toolkit</title>
+    <title>Vista Del Mar Community Hub & AI Parent Toolkit</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f9ff;
+            background-color: #f8fafc;
             color: #334155;
         }
         .container {
@@ -21,11 +21,10 @@
         .button-primary {
             background-color: #36678d;
             color: #ffffff;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         .button-primary:hover {
             background-color: #2b5575;
-            transform: translateY(-1px);
         }
         .tab-button {
             transition: all 0.2s ease;
@@ -34,7 +33,7 @@
             background-color: #36678d;
             color: #ffffff;
             font-weight: 600;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .tab-content {
             display: none;
@@ -75,38 +74,40 @@
         }
         .prompt-card:hover {
             border-color: #93c5fd;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
+        .tool-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            transition: all 0.2s ease;
+        }
+        .tool-card:hover {
+            border-color: #36678d;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
 <body class="antialiased">
     <!-- Header -->
-    <div class="header-bg py-8 shadow-md rounded-b-xl mb-6">
+    <div class="header-bg py-8 shadow-sm border-b border-sky-200 mb-6">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
             <img src="https://schoolmanager.s3.amazonaws.com/uploads/pictures/25fc030945e24d4498604749accee590.png"
-                 alt="VdM Mako Sharks Logo"
-                 class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-6 shadow-lg border-2 border-white">
+                 alt="Vista Del Mar Mako Sharks Logo"
+                 class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 md:mb-0 md:mr-6 shadow-md border-2 border-white">
             <div class="max-w-xl">
                 <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300">
-                        <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
                         Auto-Sync Active
                     </span>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 border border-purple-300">
-                        ✨ AI Parent Hub & Life Hacks
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300">
+                        AI Parent Hub
                     </span>
                 </div>
-                <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Vista del Mar Community Hub</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Vista del Mar Community Hub</h1>
                 <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-                    Your community hub for Mako school calendars, personalized child bell schedules, and AI-powered life hacks to eliminate parental mental load.
+                    Official community calendar, TK & 2nd grade schedules, and AI resources for parents.
                 </p>
             </div>
         </div>
@@ -116,37 +117,36 @@
         <!-- Navigation Tabs -->
         <div class="flex flex-wrap justify-center gap-2 mb-8 bg-sky-100/60 p-1.5 rounded-xl max-w-2xl mx-auto border border-sky-200">
             <button onclick="switchTab('calendar-tab')" id="btn-calendar-tab" class="tab-button active py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
-                📅 School Calendar & Bell Schedule
+                School Calendar & Bell Schedule
             </button>
             <button onclick="switchTab('ai-mom-tab')" id="btn-ai-mom-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
-                ✨ AI Toolkit & Life Hacks for Moms
+                AI Toolkit & Life Hacks
             </button>
             <button onclick="switchTab('submit-tab')" id="btn-submit-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
-                📝 Submit Event
+                Submit Event
             </button>
         </div>
 
         <!-- TAB 1: SCHOOL CALENDAR & BELL SCHEDULE -->
         <div id="calendar-tab" class="tab-content active">
-            <!-- Intro Banner -->
             <div class="text-gray-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-center">
                 <p class="mb-2 font-semibold text-sky-900 text-xl">
-                    Just Keep Calm and Calendar On...
+                    Vista del Mar Community Calendar
                 </p>
                 <p class="text-sm md:text-base text-gray-600">
-                    No more digging through Capo USD PDFs or scrolling through Mako Messenger Smore newsletters. AI automation keeps your family calendar up-to-date in one click.
+                    Automated calendar updates directly from Capo USD emails and Mako Messenger newsletters.
                 </p>
             </div>
 
             <!-- Personalized Child Bell Schedule Builder -->
-            <section class="mb-10 max-w-2xl mx-auto bg-gradient-to-br from-white to-sky-50 p-6 md:p-8 rounded-xl shadow-lg border border-sky-200">
+            <section class="mb-10 max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200">
                 <div class="text-center mb-6">
-                    <span class="badge bg-sky-100 text-sky-800 border border-sky-300 mb-2">
-                        ✨ Add Personalized Schedule per Child
+                    <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300 mb-2">
+                        Child Schedule Sync
                     </span>
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-800">Add Child's Bell Schedule to Calendar</h2>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">Add Child's Bell Schedule to Calendar</h2>
                     <p class="text-xs md:text-sm text-gray-600 mt-1">
-                        Type your child's name and pick their grade level to generate a custom calendar sync invite!
+                        Enter your child's name and grade to generate a custom calendar invitation.
                     </p>
                 </div>
 
@@ -173,24 +173,23 @@
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="pt-2 flex flex-col sm:flex-row gap-3">
-                        <button onclick="addCustomChildToGoogle()" class="flex-1 button-primary py-3 px-4 rounded-lg font-semibold text-sm shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-400 flex items-center justify-center">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                    <div class="pt-2">
+                        <button onclick="addCustomChildToGoogle()" class="w-full button-primary py-3 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
                             Sync to Google Calendar
                         </button>
                     </div>
 
-                    <p id="invitePreview" class="text-xs text-center text-sky-800 font-medium bg-sky-100/80 p-2 rounded border border-sky-200">
+                    <p id="invitePreview" class="text-xs text-center text-sky-800 font-medium bg-sky-50 p-2 rounded border border-sky-200">
                         Preview Invite Title: <span id="titlePreviewText" class="font-bold">Benny's TK Bell Schedule</span>
                     </p>
                 </div>
             </section>
 
             <!-- Bell Schedule Quick Reference Cards -->
-            <section class="mb-10 max-w-3xl mx-auto bg-white rounded-xl shadow-md border border-sky-100 p-6">
+            <section class="mb-10 max-w-3xl mx-auto bg-white rounded-xl shadow-sm border border-sky-100 p-6">
                 <div class="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
-                    <h2 class="text-xl font-bold text-gray-800 flex items-center">
-                        <span class="mr-2">🔔</span> Bell Schedule Reference Cards
+                    <h2 class="text-xl font-bold text-gray-800">
+                        Bell Schedule Reference Cards
                     </h2>
                     <span class="text-xs bg-sky-100 text-sky-800 font-semibold px-2.5 py-1 rounded-md">2025–2026</span>
                 </div>
@@ -222,22 +221,20 @@
                         </ul>
                     </div>
                 </div>
-                <p class="text-xs text-gray-500 mt-4 text-center">💡 Drop-off is 8:00 AM for both TK & 2nd Grade!</p>
+                <p class="text-xs text-gray-500 mt-4 text-center">Drop-off is 8:00 AM for both TK & 2nd Grade.</p>
             </section>
 
             <!-- Sync CTA Buttons for Shared Calendar -->
-            <section class="text-center mb-12 bg-white p-6 rounded-xl shadow-md border border-sky-100 max-w-2xl mx-auto">
+            <section class="text-center mb-12 bg-white p-6 rounded-xl shadow-sm border border-sky-100 max-w-2xl mx-auto">
                 <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-2">Sync the Whole-School Mako Calendar</h2>
                 <p class="text-gray-600 max-w-xl mx-auto mb-6 text-sm md:text-base">
-                    Click below to auto-sync all shared Mako school events, holidays, and minimum days directly to your phone.
+                    Auto-sync all shared Mako school events, holidays, and minimum days directly to your personal calendar.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com" target="_blank" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                    <a href="https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com" target="_blank" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-sm">
                         Add Shared Google Calendar
                     </a>
-                    <a href="webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.54c.64-.78 1.07-1.85.95-2.92-.92.04-2.04.62-2.7 1.39-.59.68-1.1 1.77-.96 2.82 1.04.08 2.07-.51 2.71-1.29z"/></svg>
+                    <a href="webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics" class="inline-flex items-center justify-center button-primary w-full sm:w-auto py-3 px-6 rounded-lg font-semibold shadow-sm">
                         Add to Apple / Outlook (iCal)
                     </a>
                 </div>
@@ -246,7 +243,7 @@
             <!-- Embedded Google Calendar -->
             <section class="mb-12">
                 <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-4 text-center">Mako Community Calendar at a Glance</h2>
-                <div class="calendar-container shadow-xl rounded-lg border border-sky-200">
+                <div class="calendar-container shadow-md rounded-lg border border-sky-200">
                     <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23f0f9ff&ctz=America%2FLos_Angeles&src=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4%40group.calendar.google.com&color=%2336678d&showPrint=0&showTabs=1&showCalendars=0&showTz=0&mode=MONTH" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                 </div>
             </section>
@@ -255,13 +252,24 @@
         <!-- TAB 2: AI TOOLKIT & LIFE HACKS FOR MOMS -->
         <div id="ai-mom-tab" class="tab-content">
             <div class="text-center mb-6 max-w-2xl mx-auto">
-                <span class="badge bg-purple-100 text-purple-800 border border-purple-300 mb-2">
-                    💡 Parents & Caregivers AI Hub
+                <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 border border-purple-300 mb-2">
+                    Parents & Caregivers AI Hub
                 </span>
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">AI Prompts & Life Hacks for Busy Moms</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">AI Prompts & Life Hacks for Parents</h2>
                 <p class="text-gray-600 text-sm md:text-base">
                     Tested AI prompts to offload mental load, eliminate dinner fatigue, sift school emails, and design stress-free routines.
                 </p>
+            </div>
+
+            <!-- Submit a Prompt Banner -->
+            <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-4 rounded-xl border border-sky-200 mb-8 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <h3 class="font-bold text-sky-900 text-sm">Have a Great AI Prompt or Life Hack?</h3>
+                    <p class="text-xs text-gray-600">Submit your prompt ideas to be featured in the community AI hub.</p>
+                </div>
+                <a href="mailto:mattandnicolepaul@gmail.com?subject=New%20AI%20Prompt%20Suggestion%20for%20Mako%20Hub&body=Hi!%20Here%20is%20an%20AI%20prompt%20or%20life%20hack%20I%20would%20like%20to%20suggest%3A%0A%0APrompt%20Title%3A%20%0APrompt%20Details%3A%20" class="button-primary py-2 px-5 rounded-lg text-xs font-semibold whitespace-nowrap">
+                    Submit a Prompt via Email
+                </a>
             </div>
 
             <!-- Category Filter Pills -->
@@ -270,19 +278,19 @@
                     All Prompts
                 </button>
                 <button onclick="filterPrompts('mental')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    🧠 Mental Load
+                    Mental Load
                 </button>
                 <button onclick="filterPrompts('school')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    🏫 School Comms
+                    School Comms
                 </button>
                 <button onclick="filterPrompts('dinners')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    🍔 Dinners & Meals
+                    Dinners & Meals
                 </button>
                 <button onclick="filterPrompts('routines')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    ☀️ Routines & Stories
+                    Routines & Stories
                 </button>
                 <button onclick="filterPrompts('health')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    💊 Health & Family
+                    Health & Family
                 </button>
             </div>
 
@@ -291,8 +299,8 @@
                 <!-- 1. Invisible Mental Load Dump -->
                 <div class="prompt-card" data-category="mental">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800 flex items-center">
-                            <span class="mr-2 text-xl">🧠</span> Invisible Mental Load Dump
+                        <h3 class="font-bold text-gray-800">
+                            Invisible Mental Load Dump
                         </h3>
                         <span class="text-xs bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-medium">Organization</span>
                     </div>
@@ -304,10 +312,10 @@
                     </div>
                     <div class="flex gap-2">
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            📋 Copy Prompt
+                            Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            🚀 Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Open in Gemini
                         </button>
                     </div>
                 </div>
@@ -315,8 +323,8 @@
                 <!-- 2. School Email Sifter -->
                 <div class="prompt-card" data-category="school">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800 flex items-center">
-                            <span class="mr-2 text-xl">🏫</span> School Email & Newsletter Sifter
+                        <h3 class="font-bold text-gray-800">
+                            School Email & Newsletter Sifter
                         </h3>
                         <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-medium">School Comms</span>
                     </div>
@@ -328,10 +336,10 @@
                     </div>
                     <div class="flex gap-2">
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            📋 Copy Prompt
+                            Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            🚀 Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Open in Gemini
                         </button>
                     </div>
                 </div>
@@ -339,8 +347,8 @@
                 <!-- 3. Dinner Decision-Maker -->
                 <div class="prompt-card" data-category="dinners">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800 flex items-center">
-                            <span class="mr-2 text-xl">🍔</span> Dinner Decision-Maker (Zero-Waste)
+                        <h3 class="font-bold text-gray-800">
+                            Dinner Decision-Maker (Zero-Waste)
                         </h3>
                         <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">Meal Prep</span>
                     </div>
@@ -352,10 +360,10 @@
                     </div>
                     <div class="flex gap-2">
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            📋 Copy Prompt
+                            Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            🚀 Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Open in Gemini
                         </button>
                     </div>
                 </div>
@@ -363,8 +371,8 @@
                 <!-- 4. Budget & Batch Cooker -->
                 <div class="prompt-card" data-category="dinners">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800 flex items-center">
-                            <span class="mr-2 text-xl">🛒</span> $120 Weekly Family Meal Batch Cooker
+                        <h3 class="font-bold text-gray-800">
+                            $120 Weekly Family Meal Batch Cooker
                         </h3>
                         <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Budget Meals</span>
                     </div>
@@ -376,10 +384,10 @@
                     </div>
                     <div class="flex gap-2">
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            📋 Copy Prompt
+                            Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            🚀 Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Open in Gemini
                         </button>
                     </div>
                 </div>
@@ -387,8 +395,8 @@
                 <!-- 5. Calm Morning Systemizer -->
                 <div class="prompt-card" data-category="routines">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800 flex items-center">
-                            <span class="mr-2 text-xl">☀️</span> Morning Routine Systemizer
+                        <h3 class="font-bold text-gray-800">
+                            Morning Routine Systemizer
                         </h3>
                         <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">Routines</span>
                     </div>
@@ -400,10 +408,10 @@
                     </div>
                     <div class="flex gap-2">
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            📋 Copy Prompt
+                            Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            🚀 Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Open in Gemini
                         </button>
                     </div>
                 </div>
@@ -411,8 +419,8 @@
                 <!-- 6. Voice Memo Story Journal -->
                 <div class="prompt-card" data-category="routines">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800 flex items-center">
-                            <span class="mr-2 text-xl">🎙️</span> Voice-to-Text Kid Memory Journal
+                        <h3 class="font-bold text-gray-800">
+                            Voice-to-Text Kid Memory Journal
                         </h3>
                         <span class="text-xs bg-pink-100 text-pink-800 px-2 py-0.5 rounded font-medium">Memories</span>
                     </div>
@@ -424,10 +432,10 @@
                     </div>
                     <div class="flex gap-2">
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            📋 Copy Prompt
+                            Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            🚀 Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Open in Gemini
                         </button>
                     </div>
                 </div>
@@ -435,8 +443,8 @@
                 <!-- 7. Medication Coordinator & Tracker -->
                 <div class="prompt-card" data-category="health">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800 flex items-center">
-                            <span class="mr-2 text-xl">💊</span> Family Medication & Pill Tracker
+                        <h3 class="font-bold text-gray-800">
+                            Family Medication & Pill Tracker
                         </h3>
                         <span class="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded font-medium">Health</span>
                     </div>
@@ -448,10 +456,10 @@
                     </div>
                     <div class="flex gap-2">
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            📋 Copy Prompt
+                            Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            🚀 Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Open in Gemini
                         </button>
                     </div>
                 </div>
@@ -459,8 +467,8 @@
                 <!-- 8. Boundary Refusal Script -->
                 <div class="prompt-card" data-category="mental">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800 flex items-center">
-                            <span class="mr-2 text-xl">🛑</span> "No is a Full Sentence" Boundary Script
+                        <h3 class="font-bold text-gray-800">
+                            Boundary Refusal Script Generator
                         </h3>
                         <span class="text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded font-medium">Boundaries</span>
                     </div>
@@ -472,45 +480,89 @@
                     </div>
                     <div class="flex gap-2">
                         <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            📋 Copy Prompt
+                            Copy Prompt
                         </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            🚀 Gemini
+                        <button onclick="openInGemini(this)" class="py-1.5 px-4 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
+                            Open in Gemini
                         </button>
                     </div>
                 </div>
             </div>
 
             <!-- Recommended AI Tools for Families -->
-            <section class="bg-white p-6 rounded-xl shadow-md border border-purple-100 max-w-4xl mx-auto mb-12">
-                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                    <span class="mr-2">📱</span> Recommended AI Tools for Families
-                </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-                    <div class="p-3 bg-purple-50/50 rounded-lg border border-purple-100">
-                        <h4 class="font-semibold text-purple-900 mb-1">PinwheelGPT</h4>
-                        <p class="text-xs text-gray-600">Safe kid-friendly AI tutor that filters mature content & lets parents view chat logs.</p>
-                    </div>
-                    <div class="p-3 bg-blue-50/50 rounded-lg border border-blue-100">
-                        <h4 class="font-semibold text-blue-900 mb-1">Gemini for Children</h4>
-                        <p class="text-xs text-gray-600">Google assistant controls under Family Link for safe research and homework support.</p>
-                    </div>
-                    <div class="p-3 bg-emerald-50/50 rounded-lg border border-emerald-100">
-                        <h4 class="font-semibold text-emerald-900 mb-1">Bedtimestory.ai</h4>
-                        <p class="text-xs text-gray-600">AI story generator creating illustrated personalized bedtime stories for kids.</p>
-                    </div>
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-sky-100 max-w-4xl mx-auto mb-12">
+                <div class="border-b border-gray-100 pb-3 mb-4 flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-gray-800">
+                        Recommended Google & AI Tools for Families
+                    </h3>
+                    <span class="text-xs font-semibold bg-sky-100 text-sky-800 px-2.5 py-0.5 rounded">Direct Links</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- Google Gemini -->
+                    <a href="https://gemini.google.com" target="_blank" class="tool-card group block">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-bold text-sky-900 text-sm group-hover:underline">Google Gemini</h4>
+                            <span class="text-[10px] bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Brainstorm family meal plans, summarize long emails, or audit weekly schedules.</p>
+                    </a>
+
+                    <!-- Google NotebookLM -->
+                    <a href="https://notebooklm.google.com" target="_blank" class="tool-card group block">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-bold text-purple-900 text-sm group-hover:underline">Google NotebookLM</h4>
+                            <span class="text-[10px] bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Upload school handbooks, medical notes, or PDFs to create instant AI Q&A notebooks.</p>
+                    </a>
+
+                    <!-- Gemini for Children & Family Link -->
+                    <a href="https://familylink.google.com" target="_blank" class="tool-card group block">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-bold text-blue-900 text-sm group-hover:underline">Gemini for Kids</h4>
+                            <span class="text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Parental controls under Family Link allowing kids to use Gemini safely for homework.</p>
+                    </a>
+
+                    <!-- Google Read Along -->
+                    <a href="https://readalong.google.com" target="_blank" class="tool-card group block">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-bold text-emerald-900 text-sm group-hover:underline">Google Read Along</h4>
+                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Speech-based AI reading assistant that gives young kids verbal reading guidance.</p>
+                    </a>
+
+                    <!-- Google Arts & Culture AI -->
+                    <a href="https://artsandculture.google.com/project/ai-experiments" target="_blank" class="tool-card group block">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-bold text-amber-900 text-sm group-hover:underline">Google Arts AI</h4>
+                            <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Interactive AI experiments and educational creative games for elementary kids.</p>
+                    </a>
+
+                    <!-- PinwheelGPT -->
+                    <a href="https://www.pinwheel.com" target="_blank" class="tool-card group block">
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="font-bold text-teal-900 text-sm group-hover:underline">PinwheelGPT</h4>
+                            <span class="text-[10px] bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded font-semibold">Family AI</span>
+                        </div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Kid-safe AI chat tutor that filters mature topics and gives parents full chat history.</p>
+                    </a>
                 </div>
             </section>
         </div>
 
         <!-- TAB 3: SUBMIT EVENT -->
         <div id="submit-tab" class="tab-content">
-            <section class="form-bg p-6 md:p-8 rounded-xl shadow-xl mb-12 text-center max-w-2xl mx-auto border border-blue-100">
+            <section class="form-bg p-6 md:p-8 rounded-xl shadow-sm mb-12 text-center max-w-2xl mx-auto border border-blue-100">
                 <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3">Add a Mako Community Calendar Event</h2>
                 <p class="text-gray-600 text-sm md:text-base mb-6">
                     Planning a TK Early Birds or 2nd Grade class party, room parent event, or noticed a missing school date? Submit your event details below to be reviewed and added to the official calendar.
                 </p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="inline-block button-primary py-3 px-8 rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="inline-block button-primary py-3 px-8 rounded-lg font-semibold shadow-sm">
                     Submit Event Details
                 </a>
             </section>
@@ -520,7 +572,7 @@
         <div class="text-center text-gray-600 text-sm max-w-xl mx-auto space-y-2 mt-8">
             <p>Questions or suggestions? Contact <a href="mailto:mattandnicolepaul@gmail.com" class="text-sky-700 underline font-medium">mattandnicolepaul@gmail.com</a></p>
             <p class="text-xs text-gray-500">
-                Created by a Mako parent for Vista Del Mar families!
+                Created by a Mako parent for Vista Del Mar families.
             </p>
         </div>
     </main>
@@ -595,7 +647,7 @@
             const textToCopy = card.querySelector('.select-all').innerText.trim();
             navigator.clipboard.writeText(textToCopy).then(() => {
                 const originalText = button.innerText;
-                button.innerText = '✅ Copied!';
+                button.innerText = 'Copied!';
                 button.classList.replace('bg-sky-50', 'bg-green-50');
                 button.classList.replace('text-sky-700', 'text-green-700');
                 setTimeout(() => {
