@@ -135,11 +135,6 @@
 
         <!-- TAB 1: SCHOOL CALENDAR & BELL SCHEDULE -->
         <div id="calendar-tab" class="tab-content active">
-            <div class="text-gray-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-center">
-                <p class="text-sm md:text-base text-gray-600">
-                    Drowning in Capo USD emails, Mako Messenger newsletters, and conflicting bell schedules? Combine the full Master School Calendar (Holidays, Minimum Days, PTA Events) with your kids' exact bell schedules into one effortless 1-click sync!
-                </p>
-            </div>
 
             <!-- Multi-Child Custom Calendar Sync Builder -->
             <section class="mb-10 max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200">
@@ -200,11 +195,11 @@
 
                 <!-- Simple Clean Action Buttons -->
                 <div class="max-w-lg mx-auto space-y-3 pt-2 border-t border-gray-100">
-                    <button onclick="syncCombinedGoogle()" class="w-full button-primary py-3.5 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
-                        Add to Google Calendar
+                    <button onclick="downloadCustomICS()" class="w-full button-primary py-3.5 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
+                        Add to Apple / iPhone Calendar (.ics)
                     </button>
-                    <button onclick="downloadCustomICS()" class="w-full button-secondary py-3.5 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
-                        Add to Apple Calendar
+                    <button onclick="syncCombinedGoogle()" class="w-full button-secondary py-3.5 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
+                        Add to Google Calendar
                     </button>
                 </div>
             </section>
@@ -586,21 +581,28 @@
         ];
 
         const masterSchoolEventsICS = 
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: First Day of School (Regular Schedule)\r\nDTSTART;VALUE=DATE:20260818\r\nDTEND;VALUE=DATE:20260819\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Back to School Night (Minimum Day - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20260827\r\nDTEND;VALUE=DATE:20260828\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Labor Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20260907\r\nDTEND;VALUE=DATE:20260908\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Staff Development Day (Pupil Free - No School)\r\nDTSTART;VALUE=DATE:20261012\r\nDTEND;VALUE=DATE:20261013\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Parent Conferences Week (Minimum Days - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20261019\r\nDTEND;VALUE=DATE:20261024\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Veterans Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20261111\r\nDTEND;VALUE=DATE:20261112\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Thanksgiving Recess (No School)\r\nDTSTART;VALUE=DATE:20261123\r\nDTEND;VALUE=DATE:20261128\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Winter Recess (No School)\r\nDTSTART;VALUE=DATE:20261221\r\nDTEND;VALUE=DATE:20270102\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Martin Luther King Jr. Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20270118\r\nDTEND;VALUE=DATE:20270119\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Lincoln Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20270212\r\nDTEND;VALUE=DATE:20270213\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Washington Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20270215\r\nDTEND;VALUE=DATE:20270216\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Open House (Minimum Day - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20270325\r\nDTEND;VALUE=DATE:20270326\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Spring Recess (No School)\r\nDTSTART;VALUE=DATE:20270405\r\nDTEND;VALUE=DATE:20270410\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Memorial Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20270531\r\nDTEND;VALUE=DATE:20270601\r\nEND:VEVENT\r\n` +
-            `BEGIN:VEVENT\r\nSUMMARY:VdM: Last Day of School (Minimum Day - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20270603\r\nDTEND;VALUE=DATE:20270604\r\nEND:VEVENT`;
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Independence Day (Observed) - Legal Holiday\r\nDTSTART;VALUE=DATE:20260703\r\nDTEND;VALUE=DATE:20260704\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Teacher Pre-Service / PD Days\r\nDTSTART;VALUE=DATE:20260812\r\nDTEND;VALUE=DATE:20260815\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Opening Day of School & Minimum Day (Dismissal 1:15 PM)\r\nDTSTART;TZID=America/Los_Angeles:20260818T080000\r\nDTEND;TZID=America/Los_Angeles:20260818T131500\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Back-to-School Night (Elementary Minimum Days)\r\nDTSTART;VALUE=DATE:20260901\r\nDTEND;VALUE=DATE:20260904\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Labor Day - No School (Legal Holiday)\r\nDTSTART;VALUE=DATE:20260907\r\nDTEND;VALUE=DATE:20260908\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: No School - K-12 Pupil-Free Day (Parent Conferences)\r\nDTSTART;VALUE=DATE:20261102\r\nDTEND;VALUE=DATE:20261103\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Minimum Day Parent Conferences (Elementary)\r\nDTSTART;TZID=America/Los_Angeles:20261103T080000\r\nDTEND;TZID=America/Los_Angeles:20261107T124500\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Veterans Day - No School (Legal Holiday)\r\nDTSTART;VALUE=DATE:20261111\r\nDTEND;VALUE=DATE:20261112\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Fall Recess & Thanksgiving Break - No School\r\nDTSTART;VALUE=DATE:20261123\r\nDTEND;VALUE=DATE:20261128\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: School Resumes after Thanksgiving Break\r\nDTSTART;VALUE=DATE:20261130\r\nDTEND;VALUE=DATE:20261130\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: No School - K-12 Pupil-Free Teacher Semester Wrap-Up\r\nDTSTART;VALUE=DATE:20261218\r\nDTEND;VALUE=DATE:20261219\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Winter Recess - No School\r\nDTSTART;VALUE=DATE:20261221\r\nDTEND;VALUE=DATE:20270102\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: School Resumes after Winter Recess\r\nDTSTART;VALUE=DATE:20270104\r\nDTEND;VALUE=DATE:20270104\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Dr. Martin Luther King, Jr. Day - No School (Legal Holiday)\r\nDTSTART;VALUE=DATE:20270118\r\nDTEND;VALUE=DATE:20270119\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Lincoln Day - No School (Legal Holiday)\r\nDTSTART;VALUE=DATE:20270212\r\nDTEND;VALUE=DATE:20270213\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Washington Day - No School (Legal Holiday)\r\nDTSTART;VALUE=DATE:20270215\r\nDTEND;VALUE=DATE:20270216\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Minimum Day Parent Conferences (Elementary)\r\nDTSTART;TZID=America/Los_Angeles:20270301T080000\r\nDTEND;TZID=America/Los_Angeles:20270305T124500\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Spring Recess - No School\r\nDTSTART;VALUE=DATE:20270405\r\nDTEND;VALUE=DATE:20270410\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: School Resumes after Spring Recess\r\nDTSTART;VALUE=DATE:20270412\r\nDTEND;VALUE=DATE:20270412\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Memorial Day - No School (Legal Holiday)\r\nDTSTART;VALUE=DATE:20270531\r\nDTEND;VALUE=DATE:20270601\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Last Day of School & Minimum Day (Dismissal at 12:45 PM)\r\nDTSTART;TZID=America/Los_Angeles:20270603T080000\r\nDTEND;TZID=America/Los_Angeles:20270603T124500\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Juneteenth - Legal Holiday\r\nDTSTART;VALUE=DATE:20270618\r\nDTEND;VALUE=DATE:20270619\r\nEND:VEVENT`;
 
         function addChildRow() {
             const container = document.getElementById('childrenContainer');
@@ -703,8 +705,11 @@
         }
 
         function syncCombinedGoogle() {
-            const sharedCidUrl = "https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com";
-            window.open(sharedCidUrl, '_blank');
+            // Generates custom ICS download & opens Google Calendar import settings so user gets BOTH Master Calendar + Kids Schedules!
+            downloadCustomICS();
+            setTimeout(() => {
+                window.open('https://calendar.google.com/calendar/r/settings/export', '_blank');
+            }, 800);
         }
 
         function switchTab(tabId) {
