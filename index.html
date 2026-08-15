@@ -110,9 +110,6 @@
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300">
                         Auto-Sync Active
                     </span>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300">
-                        All-in-One Calendar
-                    </span>
                 </div>
                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Vista del Mar Community Hub</h1>
                 <p class="text-gray-600 text-sm md:text-base leading-relaxed">
@@ -129,21 +126,18 @@
                 School Calendar & Bell Schedule
             </button>
             <button onclick="switchTab('ai-mom-tab')" id="btn-ai-mom-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
-                Parent AI Toolkits
+                Parents & Caregivers AI Hub
             </button>
             <button onclick="switchTab('contact-tab')" id="btn-contact-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
-                Contact & Consult
+                Contact
             </button>
         </div>
 
         <!-- TAB 1: SCHOOL CALENDAR & BELL SCHEDULE -->
         <div id="calendar-tab" class="tab-content active">
             <div class="text-gray-700 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed text-center">
-                <p class="mb-2 font-semibold text-sky-900 text-xl">
-                    Drowning in Capo USD emails, Mako Messenger newsletters, and conflicting bell schedules?
-                </p>
                 <p class="text-sm md:text-base text-gray-600">
-                    Combine the full Master School Calendar (Holidays, Minimum Days, PTA Events) with your kids' exact bell schedules into one effortless 1-click sync!
+                    Drowning in Capo USD emails, Mako Messenger newsletters, and conflicting bell schedules? Combine the full Master School Calendar (Holidays, Minimum Days, PTA Events) with your kids' exact bell schedules into one effortless 1-click sync!
                 </p>
             </div>
 
@@ -165,11 +159,11 @@
                     <div class="space-y-2 text-xs font-medium text-gray-800">
                         <label class="flex items-center space-x-2 cursor-pointer">
                             <input type="radio" name="inviteStyle" value="combined" checked class="text-sky-600 focus:ring-sky-500">
-                            <span><strong>1 Combined Invite</strong> for Drop-off & Dismissal (e.g. Benny Drop-off 8:00 AM, Benny Dismissal 11:20 AM)</span>
+                            <span><strong>1 Combined Invite</strong> for Drop-off & Dismissal (e.g. Drop-off 8:00 AM, Dismissal 11:20 AM)</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
                             <input type="radio" name="inviteStyle" value="separate" class="text-sky-600 focus:ring-sky-500">
-                            <span><strong>Separate Invites</strong> per Child per Day (e.g. Benny TK Bell Schedule 8:00 AM - 11:20 AM)</span>
+                            <span><strong>Separate Invites</strong> per Child per Day (e.g. TK Bell Schedule 8:00 AM - 11:20 AM)</span>
                         </label>
                     </div>
                 </div>
@@ -181,7 +175,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
-                                <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="e.g. Benny" value="Benny">
+                                <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="Insert child name here" value="">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Grade Level</label>
@@ -199,12 +193,13 @@
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Calendar Color</label>
                                 <select class="child-color w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
-                                    <option value="#3b82f6" selected>🔵 Blue</option>
-                                    <option value="#8b5cf6">🟣 Purple</option>
-                                    <option value="#10b981">🟢 Emerald Green</option>
-                                    <option value="#f43f5e">🔴 Rose Red</option>
-                                    <option value="#f97316">🟠 Amber Orange</option>
-                                    <option value="#06b6d4">🩵 Sky / Teal</option>
+                                    <option value="#4285f4" selected>🔵 Blue (Cobalt)</option>
+                                    <option value="#039be5">🩵 Peacock (Sky)</option>
+                                    <option value="#8e24aa">🟣 Grape (Purple)</option>
+                                    <option value="#0b8043">🟢 Basil (Green)</option>
+                                    <option value="#e67c73">🔴 Flamingo (Red)</option>
+                                    <option value="#f4511e">🟠 Tangerine (Orange)</option>
+                                    <option value="#f6bf26">🟡 Banana (Yellow)</option>
                                 </select>
                             </div>
                         </div>
@@ -242,264 +237,338 @@
             </section>
         </div>
 
-        <!-- TAB 2: PARENT AI TOOLKITS -->
+        <!-- TAB 2: PARENTS & CAREGIVERS AI HUB -->
         <div id="ai-mom-tab" class="tab-content">
             <div class="text-center mb-6 max-w-2xl mx-auto">
                 <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 border border-purple-300 mb-2">
-                    Parents & Caregivers AI Hub
+                    Community Caregiver Toolkit
                 </span>
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">AI Prompts & Life Hacks for Parents</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Parents & Caregivers AI Hub</h2>
                 <p class="text-gray-600 text-sm md:text-base">
-                    Tested AI prompts to offload mental load, eliminate dinner fatigue, sift school emails, and design stress-free routines.
+                    Tested AI prompts, automation hacks, and tools to offload mental load, organize school comms, eliminate dinner fatigue, and calm daily routines.
                 </p>
             </div>
 
-            <!-- Submit a Prompt Email Banner -->
-            <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-5 rounded-xl border border-sky-200 mb-8 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
-                <div>
-                    <h3 class="font-bold text-sky-900 text-sm">Have a Great AI Prompt or Life Hack?</h3>
-                    <p class="text-xs text-gray-600">Submit your prompt idea to be added to the community hub.</p>
-                </div>
-                <button onclick="submitPromptEmail()" class="button-primary py-2.5 px-6 rounded-lg text-xs font-semibold whitespace-nowrap shadow-sm">
-                    Submit a Prompt via Email
-                </button>
-            </div>
-
-            <!-- Category Filter Pills -->
-            <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
-                <button onclick="filterPrompts('all')" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    All Prompts
-                </button>
-                <button onclick="filterPrompts('mental')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    Mental Load
-                </button>
-                <button onclick="filterPrompts('school')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    School Comms
-                </button>
-                <button onclick="filterPrompts('dinners')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    Dinners & Meals
-                </button>
-                <button onclick="filterPrompts('routines')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    Routines & Stories
-                </button>
-                <button onclick="filterPrompts('health')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
-                    Health & Family
-                </button>
-            </div>
-
-            <!-- Prompts Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
-                <!-- 1. Invisible Mental Load Dump -->
-                <div class="prompt-card" data-category="mental">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800">
-                            Invisible Mental Load Dump
-                        </h3>
-                        <span class="text-xs bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-medium">Organization</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
-                        Audit mental clutter into automated tasks, delegation scripts, and a low-stress schedule.
-                    </p>
-                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
-                        "I am carrying a heavy mental load. Here is a brain dump of what is in my head: [insert bullet points]. Please audit this list and deliver: (1) what I can systemize or automate, (2) what I can delegate, (3) what can wait for next week, and (4) a realistic, low-stress schedule for the rest."
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            Copy Prompt
-                        </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Copy & Open Gemini
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 2. School Email Sifter -->
-                <div class="prompt-card" data-category="school">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800">
-                            School Email & Newsletter Sifter
-                        </h3>
-                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-medium">School Comms</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
-                        Instantly extracts dates, backpack checklists, and permission slip deadlines from long newsletters.
-                    </p>
-                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
-                        "I am going to paste a long school newsletter/email chain. Extract all key actions and organize them into a clear table with columns: Date, Event, Affected Child, Action Required, and Deadline. Also provide a 'Backpack Checklist' of physical items needed."
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            Copy Prompt
-                        </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Copy & Open Gemini
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 3. Dinner Decision-Maker -->
-                <div class="prompt-card" data-category="dinners">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800">
-                            Dinner Decision-Maker (Zero-Waste)
-                        </h3>
-                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">Meal Prep</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
-                        Creates a 5-day weeknight dinner plan under 30 minutes active prep time with deconstructed options for picky eaters.
-                    </p>
-                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
-                        "Act as a zero-waste family chef. Create a 5-day dinner plan for [2 adults and 2 kids]. Keep prep under 30 minutes, use overlapping ingredients to eliminate food waste, provide 'deconstructed' options for picky eaters, and generate a categorized grocery list."
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            Copy Prompt
-                        </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Copy & Open Gemini
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 4. Budget & Batch Cooker -->
-                <div class="prompt-card" data-category="dinners">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800">
-                            $120 Weekly Family Meal Batch Cooker
-                        </h3>
-                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Budget Meals</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
-                        Transforms batch-cooked proteins into 5 completely different family meals under $120.
-                    </p>
-                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
-                        "Create a budget-friendly weekly meal plan (Monday-Friday) for a family of 4 under $120. Focus on batch-cooking core proteins on Sunday that transform into 5 completely different dinners during the week. Include an organized grocery list sorted by supermarket section."
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            Copy Prompt
-                        </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Copy & Open Gemini
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recommended AI Tools for Families -->
-            <section class="bg-white p-6 rounded-xl shadow-sm border border-sky-100 max-w-4xl mx-auto mb-12">
-                <div class="border-b border-gray-100 pb-3 mb-4 flex items-center justify-between">
-                    <h3 class="text-lg font-bold text-gray-800">
-                        Recommended Google & AI Tools for Families
+            <!-- SECTION 1: LIFE-CHANGING PARENT PROMPTS -->
+            <div class="mb-12">
+                <div class="border-b border-gray-200 pb-3 mb-6 max-w-4xl mx-auto flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-gray-900 flex items-center">
+                        <span class="mr-2">💡</span> Life-Changing Prompts for Parents
                     </h3>
-                    <span class="text-xs font-semibold bg-sky-100 text-sky-800 px-2.5 py-0.5 rounded">Direct Links</span>
+                    <span class="text-xs bg-sky-100 text-sky-800 px-2.5 py-0.5 rounded font-semibold">Copy-Paste Ready</span>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    <!-- Google Gemini -->
-                    <a href="https://gemini.google.com" target="_blank" class="tool-card group block">
-                        <div class="flex items-center justify-between mb-1">
-                            <h4 class="font-bold text-sky-900 text-sm group-hover:underline">Google Gemini</h4>
-                            <span class="text-[10px] bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
-                        </div>
-                        <p class="text-xs text-gray-600 leading-relaxed">Brainstorm family meal plans, summarize long emails, or audit weekly schedules.</p>
-                    </a>
 
-                    <!-- Google NotebookLM -->
-                    <a href="https://notebooklm.google.com" target="_blank" class="tool-card group block">
-                        <div class="flex items-center justify-between mb-1">
-                            <h4 class="font-bold text-purple-900 text-sm group-hover:underline">Google NotebookLM</h4>
-                            <span class="text-[10px] bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
-                        </div>
-                        <p class="text-xs text-gray-600 leading-relaxed">Upload school handbooks, medical notes, or PDFs to create instant AI Q&A notebooks.</p>
-                    </a>
+                <!-- Category Filter Pills -->
+                <div class="flex flex-wrap justify-center gap-2 mb-8 max-w-3xl mx-auto">
+                    <button onclick="filterPrompts('all')" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
+                        All Prompts
+                    </button>
+                    <button onclick="filterPrompts('mental')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
+                        Mental Load & Routines
+                    </button>
+                    <button onclick="filterPrompts('school')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
+                        School & Learning
+                    </button>
+                    <button onclick="filterPrompts('dinners')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
+                        Meals & Prep
+                    </button>
+                    <button onclick="filterPrompts('parenting')" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200">
+                        Bedtime & Behavior
+                    </button>
+                </div>
 
-                    <!-- Gemini for Children & Family Link -->
-                    <a href="https://familylink.google.com" target="_blank" class="tool-card group block">
-                        <div class="flex items-center justify-between mb-1">
-                            <h4 class="font-bold text-blue-900 text-sm group-hover:underline">Gemini for Kids</h4>
-                            <span class="text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                <!-- Prompts Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <!-- 1. Mental Load Audit & Task Delegation -->
+                    <div class="prompt-card" data-category="mental">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800 text-sm">Invisible Mental Load Dump</h4>
+                            <span class="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-medium">Organization</span>
                         </div>
-                        <p class="text-xs text-gray-600 leading-relaxed">Parental controls under Family Link allowing kids to use Gemini safely for homework.</p>
+                        <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                            Audits mental clutter into systemized tasks, realistic partner delegation scripts, and low-stress schedules.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                            "I am carrying a heavy mental load. Here is a brain dump of what is in my head: [insert bullet points]. Please audit this list and deliver: (1) what I can systemize or automate, (2) what I can realistically delegate, (3) what can wait for next week, and (4) a realistic, low-stress schedule for the rest."
+                        </div>
+                        <button onclick="copyText(this)" class="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                            Copy Prompt
+                        </button>
+                    </div>
+
+                    <!-- 2. School Email & Newsletter Sifter -->
+                    <div class="prompt-card" data-category="school">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800 text-sm">School Email & Newsletter Sifter</h4>
+                            <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-medium">School Comms</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                            Instantly pulls out key dates, dress-up days, and permission slips buried in long newsletters.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                            "I am going to paste a long school newsletter/email chain. Extract all key actions and organize them into a clear table with columns: Date, Event, Affected Child, Action Required, and Deadline. Keep it concise so I don't miss anything."
+                        </div>
+                        <button onclick="copyText(this)" class="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                            Copy Prompt
+                        </button>
+                    </div>
+
+                    <!-- 3. Morning Routine Systemizer -->
+                    <div class="prompt-card" data-category="mental">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800 text-sm">Morning Routine Systemizer</h4>
+                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">Morning Flow</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                            Builds a predictable morning rhythm with built-in emergency buffers to get out the door calmly.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                            "Design a calm morning routine for a family with kids aged [ages] who need to be out the door by [time]. Include specific time-block estimates for tasks (getting dressed, breakfast, packing bags) and build in a realistic 15-minute 'what if we are running late' backup plan."
+                        </div>
+                        <button onclick="copyText(this)" class="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                            Copy Prompt
+                        </button>
+                    </div>
+
+                    <!-- 4. 30-Minute Zero-Waste Dinner Plan -->
+                    <div class="prompt-card" data-category="dinners">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800 text-sm">30-Min Dinners & Picky Eater Plan</h4>
+                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Meal Prep</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                            Creates a 5-day weeknight dinner plan under 30 minutes with deconstructed plates for picky kids.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                            "Act as a realistic family chef. Create a 5-day dinner plan for [number] adults and [number] kids aged [ages]. Keep prep under 30 minutes, use affordable ingredients, accommodate these dislikes/allergies: [constraints], highlight overlapping ingredients to reduce waste, and generate a categorized grocery list."
+                        </div>
+                        <button onclick="copyText(this)" class="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                            Copy Prompt
+                        </button>
+                    </div>
+
+                    <!-- 5. Homework & Analogy Helper -->
+                    <div class="prompt-card" data-category="school">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800 text-sm">Homework & Analogy Helper</h4>
+                            <span class="text-[10px] bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-medium">Learning</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                            Explains complex school topics using real-world analogies (pizza, LEGOs) and off-screen activities.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                            "Explain [school topic, e.g., fractions or photosynthesis] to my [age]-year-old. Use a fun, real-world analogy (like pizza slices, LEGOs, or baking) and provide 3 quick, hands-on off-screen activities we can do at home to practice."
+                        </div>
+                        <button onclick="copyText(this)" class="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                            Copy Prompt
+                        </button>
+                    </div>
+
+                    <!-- 6. Meltdown-Free Transitions -->
+                    <div class="prompt-card" data-category="parenting">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800 text-sm">Meltdown-Free Transitions</h4>
+                            <span class="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-medium">Behavior</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                            Equips parents with gentle, non-punitive scripts to guide emotional transitions smoothly without screaming.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                            "My [age]-year-old melts down every time we transition from playing to a chore or leaving the house. Give me a step-by-step transition plan, including 5 gentle verbal cues/scripts that prepare them mentally without causing a power struggle."
+                        </div>
+                        <button onclick="copyText(this)" class="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                            Copy Prompt
+                        </button>
+                    </div>
+
+                    <!-- 7. Screen Time Collaborative Agreement -->
+                    <div class="prompt-card" data-category="parenting">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800 text-sm">Collaborative Screen Time Agreement</h4>
+                            <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-medium">Digital Boundaries</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                            Drafts a positive family agreement for tablets/gaming with turn-off scripts to prevent arguments.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                            "Help me draft a family screen time agreement for kids aged [ages] that feels fair, collaborative, and positive. Include simple guidelines for weekdays vs. weekends, and provide 3 scripts I can use to handle arguments when it's time to turn screens off."
+                        </div>
+                        <button onclick="copyText(this)" class="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                            Copy Prompt
+                        </button>
+                    </div>
+
+                    <!-- 8. Voice-to-Text Memory Journaling -->
+                    <div class="prompt-card" data-category="mental">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-800 text-sm">Voice Memo Childhood Memory Book</h4>
+                            <span class="text-[10px] bg-pink-100 text-pink-800 px-2 py-0.5 rounded font-medium">Memories</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-3 leading-relaxed">
+                            Turns random voice notes of funny kid moments into an organized childhood memory book effortlessly.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
+                            "Here are transcribed voice memos from this week about my kids. Please organize them into a readable format with dates, quotes, and context. Make it warm, personal, and formatted like a family memory journal: [paste transcriptions]"
+                        </div>
+                        <button onclick="copyText(this)" class="w-full py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
+                            Copy Prompt
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: CURATED FAMILY AI TOOLS & AUTOMATION HACKS -->
+            <div class="mb-12">
+                <div class="border-b border-gray-200 pb-3 mb-6 max-w-4xl mx-auto flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-gray-900 flex items-center">
+                        <span class="mr-2">🛠️</span> Recommended AI Tools & Family Automation Hacks
+                    </h3>
+                    <a href="https://familymind.ai/blog/10-best-ai-tools-to-keep-your-family-organized-and-save-hours-every-week" target="_blank" class="text-xs text-sky-700 font-semibold underline hover:text-sky-900">
+                        View FamilyMind 10 Best AI Tools Guide →
                     </a>
                 </div>
-            </section>
+
+                <!-- Group 1: Core Family AI Assistants -->
+                <div class="max-w-4xl mx-auto mb-8">
+                    <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Core Family AI Assistants</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="https://gemini.google.com" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-sky-900 text-sm group-hover:underline">Google Gemini</h5>
+                                <span class="text-[10px] bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Brainstorm meal plans, audit schedules, or build custom parent Gems.</p>
+                        </a>
+
+                        <a href="https://notebooklm.google.com" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-purple-900 text-sm group-hover:underline">Google NotebookLM</h5>
+                                <span class="text-[10px] bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Upload school handbooks or medical notes for an instant AI search notebook.</p>
+                        </a>
+
+                        <a href="https://familylink.google.com" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-blue-900 text-sm group-hover:underline">Gemini for Kids</h5>
+                                <span class="text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Parental controls under Family Link allowing kids under 13 to use Gemini safely.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Group 2: Kids Learning & Bedtime Tools -->
+                <div class="max-w-4xl mx-auto mb-8">
+                    <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Kids Learning & Bedtime Tools</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="https://bedtimestory.ai" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-indigo-900 text-sm group-hover:underline">BedtimeStory.ai</h5>
+                                <span class="text-[10px] bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-semibold">Stories</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Generates custom bedtime audio stories tailored to your child's favorite themes.</p>
+                        </a>
+
+                        <a href="https://www.pinwheel.com" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-emerald-900 text-sm group-hover:underline">PinwheelGPT</h5>
+                                <span class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-semibold">Safe AI</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Filters mature content & logs chats for kids aged 7–12 to practice creative writing safely.</p>
+                        </a>
+
+                        <a href="https://littlelit.ai" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-amber-900 text-sm group-hover:underline">LittleLit AI</h5>
+                                <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-semibold">Tutor</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Adapts math problems and coding lessons to a child's exact learning style.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Group 3: Elderly Care & Safety Tools -->
+                <div class="max-w-4xl mx-auto mb-8">
+                    <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Elderly Care & Family Safety Tech</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="https://herohealth.com" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-rose-900 text-sm group-hover:underline">Hero Health</h5>
+                                <span class="text-[10px] bg-rose-100 text-rose-800 px-1.5 py-0.5 rounded font-semibold">Medication</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Smart dispenser that automatically sorts, dispenses, and tracks complex pill schedules.</p>
+                        </a>
+
+                        <a href="https://sensi.ai" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-sky-900 text-sm group-hover:underline">Sensi.AI & Vayyar</h5>
+                                <span class="text-[10px] bg-sky-100 text-sky-800 px-1.5 py-0.5 rounded font-semibold">Fall Safety</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Camera-free 4D radar wall sensors detecting falls and distress while protecting privacy.</p>
+                        </a>
+
+                        <a href="https://elliq.com" target="_blank" class="tool-card group block">
+                            <div class="flex items-center justify-between mb-1">
+                                <h5 class="font-bold text-purple-900 text-sm group-hover:underline">ElliQ 3 Companion</h5>
+                                <span class="text-[10px] bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-semibold">Companion</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">Interactive companion robot fighting senior isolation with daily chats & doctor video calls.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Group 4: Browser AI Skills Guide -->
+                <div class="max-w-4xl mx-auto bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm">Chrome Ask Gemini Skills Guide</h4>
+                            <p class="text-xs text-gray-600">Save your favorite parent prompts directly into Chrome's Ask Gemini side panel for 1-click use on any site.</p>
+                        </div>
+                        <a href="https://blog.google/products-and-platforms/products/chrome/skills-in-chrome/" target="_blank" class="button-secondary py-2 px-4 rounded-lg text-xs font-semibold whitespace-nowrap">
+                            Read Chrome AI Skills Guide
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- TAB 3: CONTACT & CONSULT -->
+        <!-- TAB 3: CONTACT -->
         <div id="contact-tab" class="tab-content">
             <div class="text-center mb-8 max-w-2xl mx-auto">
                 <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300 mb-2">
                     Community & Business Connect
                 </span>
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">Contact, Consult & Submit</h2>
-                <p class="text-gray-600 text-sm md:text-base">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Contact & Community Submissions</h2>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed">
                     Submit events to the calendar, inquire about sponsorships & ads, or consult with Nicole Paul on custom AI workflows.
                 </p>
             </div>
 
-            <!-- Unified Community & Event Form Card -->
-            <section class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200 max-w-3xl mx-auto mb-10 text-center">
-                <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300 mb-3">
-                    Unified Submission Form
-                </span>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Mako Community Hub Form</h3>
-                <p class="text-sm text-gray-600 max-w-xl mx-auto mb-6">
-                    Use our central form to submit school events, request sponsorship/advertising, suggest AI prompt additions, or request a 1-on-1 consultation.
+            <!-- Unified Form Card -->
+            <section class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200 max-w-2xl mx-auto mb-8 text-center">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Mako Community Hub Submission Form</h3>
+                <p class="text-xs md:text-sm text-gray-600 max-w-lg mx-auto mb-6 leading-relaxed">
+                    Submit events to the calendar, inquire about sponsorships & ads, or consult with Nicole Paul on custom AI workflows.
                 </p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="inline-block button-primary py-3.5 px-8 rounded-lg font-semibold text-sm shadow-sm">
-                    Open Community & Event Form
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=dialog" target="_blank" class="inline-block button-primary py-3.5 px-8 rounded-lg font-semibold text-sm shadow-sm">
+                    Open Submission Form
                 </a>
             </section>
 
-            <!-- Direct Contact Options Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-10">
-                <!-- Submit an Event Card -->
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-100 flex flex-col justify-between">
-                    <div>
-                        <h4 class="font-bold text-gray-800 text-base mb-1">Submit School Event</h4>
-                        <p class="text-xs text-gray-600 mb-4">Planning a class party, PTA event, or noticed a missing school date?</p>
-                    </div>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="w-full button-secondary py-2 px-3 rounded-lg font-semibold text-xs text-center">
-                        Submit Event
-                    </a>
-                </div>
-
-                <!-- Sponsor & Ads Card -->
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-emerald-100 flex flex-col justify-between">
-                    <div>
-                        <h4 class="font-bold text-gray-800 text-base mb-1">Sponsor / Advertise</h4>
-                        <p class="text-xs text-gray-600 mb-4">Promote your business or sponsor a section on the Mako Hub.</p>
-                    </div>
-                    <button onclick="sponsorInquiryEmail()" class="w-full button-secondary py-2 px-3 rounded-lg font-semibold text-xs text-center">
-                        Inquire About Sponsorship
-                    </button>
-                </div>
-
-                <!-- AI Consultation Card -->
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-purple-100 flex flex-col justify-between">
-                    <div>
-                        <h4 class="font-bold text-gray-800 text-base mb-1">1-on-1 AI Consultation</h4>
-                        <p class="text-xs text-gray-600 mb-4">Book a session to build custom AI workflows for your household or organization.</p>
-                    </div>
-                    <button onclick="consultInquiryEmail()" class="w-full button-secondary py-2 px-3 rounded-lg font-semibold text-xs text-center">
-                        Schedule Consultation
-                    </button>
-                </div>
-            </div>
-
-            <!-- Optional Venmo Tip Banner -->
-            <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-5 rounded-xl border border-sky-200 max-w-xl mx-auto text-center shadow-sm mb-8">
-                <p class="text-xs text-gray-600 mb-2">
+            <!-- Tip the Creator Banner -->
+            <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-6 rounded-xl border border-sky-200 max-w-2xl mx-auto text-center shadow-sm mb-10">
+                <p class="text-xs md:text-sm text-gray-700 font-medium mb-3">
                     Enjoying the Mako Hub automation? This is a free community project built by a fellow parent.
                 </p>
-                <a href="https://venmo.com/nicole-paul-4" target="_blank" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg text-xs transition shadow-sm">
-                    Optional: Tip the Creator on Venmo (@nicole-paul-4)
+                <a href="https://venmo.com/nicole-paul-4" target="_blank" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg text-xs transition shadow-sm">
+                    Tip the Creator on Venmo (@nicole-paul-4)
                 </a>
             </div>
 
             <!-- Contact & Support Note -->
             <div class="text-center text-gray-600 text-sm max-w-xl mx-auto space-y-2 pt-6 border-t border-gray-100">
-                <p>Questions or suggestions? Contact <a href="mailto:mattandnicolepaul@gmail.com" class="text-sky-700 underline font-medium">mattandnicolepaul@gmail.com</a></p>
+                <p>Questions or direct email? Contact <a href="mailto:mattandnicolepaul@gmail.com" class="text-sky-700 underline font-medium">mattandnicolepaul@gmail.com</a></p>
                 <p class="text-xs text-gray-500">
                     Created by a Mako parent for Vista Del Mar families.
                 </p>
@@ -560,7 +629,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
-                        <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="e.g. Jackson">
+                        <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="Insert child name here" value="">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Grade Level</label>
@@ -578,12 +647,13 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Calendar Color</label>
                         <select class="child-color w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
-                            <option value="#3b82f6">🔵 Blue</option>
-                            <option value="#8b5cf6" selected>🟣 Purple</option>
-                            <option value="#10b981">🟢 Emerald Green</option>
-                            <option value="#f43f5e">🔴 Rose Red</option>
-                            <option value="#f97316">🟠 Amber Orange</option>
-                            <option value="#06b6d4">🩵 Sky / Teal</option>
+                            <option value="#4285f4">🔵 Blue (Cobalt)</option>
+                            <option value="#039be5">🩵 Peacock (Sky)</option>
+                            <option value="#8e24aa" selected>🟣 Grape (Purple)</option>
+                            <option value="#0b8043">🟢 Basil (Green)</option>
+                            <option value="#e67c73">🔴 Flamingo (Red)</option>
+                            <option value="#f4511e">🟠 Tangerine (Orange)</option>
+                            <option value="#f6bf26">🟡 Banana (Yellow)</option>
                         </select>
                     </div>
                 </div>
@@ -675,24 +745,6 @@
             window.open(sharedCidUrl, '_blank');
         }
 
-        function submitPromptEmail() {
-            const subject = encodeURIComponent("Mako Mom - AI suggestion");
-            const body = encodeURIComponent("Hi Nicole,\n\nHere is my AI prompt or life hack suggestion:\n\nPrompt Title: \nPrompt / Idea Details: \n\nFrom a Mako Parent");
-            window.location.href = `mailto:mattandnicolepaul@gmail.com?subject=${subject}&body=${body}`;
-        }
-
-        function sponsorInquiryEmail() {
-            const subject = encodeURIComponent("Mako Hub - Sponsorship / Ad Inquiry");
-            const body = encodeURIComponent("Hi Nicole,\n\nI am interested in sponsoring or advertising my business on the Vista Del Mar Mako Community Hub.\n\nBusiness Name:\nContact Phone:\nMessage Details:");
-            window.location.href = `mailto:mattandnicolepaul@gmail.com?subject=${subject}&body=${body}`;
-        }
-
-        function consultInquiryEmail() {
-            const subject = encodeURIComponent("Mako Hub - AI Consultation Inquiry");
-            const body = encodeURIComponent("Hi Nicole,\n\nI would like to schedule a consultation with you regarding custom AI prompts, calendar automation, or digital workflows.\n\nName:\nTopic / Goal:\nPreferred Contact Method:");
-            window.location.href = `mailto:mattandnicolepaul@gmail.com?subject=${subject}&body=${body}`;
-        }
-
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
@@ -718,7 +770,7 @@
             const textToCopy = card.querySelector('.select-all').innerText.trim();
             navigator.clipboard.writeText(textToCopy).then(() => {
                 const originalText = button.innerText;
-                button.innerText = 'Copied!';
+                button.innerText = 'Copied to Clipboard!';
                 button.classList.replace('bg-sky-50', 'bg-green-50');
                 button.classList.replace('text-sky-700', 'text-green-700');
                 setTimeout(() => {
@@ -726,26 +778,6 @@
                     button.classList.replace('bg-green-50', 'bg-sky-50');
                     button.classList.replace('text-green-700', 'text-sky-700');
                 }, 2000);
-            });
-        }
-
-        function openInGemini(button) {
-            const card = button.closest('.prompt-card');
-            const promptText = card.querySelector('.select-all').innerText.trim();
-            
-            navigator.clipboard.writeText(promptText).then(() => {
-                const originalText = button.innerText;
-                button.innerText = 'Copied! Opening Gemini...';
-                button.classList.replace('bg-purple-50', 'bg-green-50');
-                button.classList.replace('text-purple-700', 'text-green-700');
-                
-                window.open('https://gemini.google.com/app', '_blank');
-                
-                setTimeout(() => {
-                    button.innerText = originalText;
-                    button.classList.replace('bg-green-50', 'bg-purple-50');
-                    button.classList.replace('text-green-700', 'text-purple-700');
-                }, 2500);
             });
         }
     </script>
