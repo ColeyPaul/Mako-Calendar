@@ -111,7 +111,7 @@
                         Auto-Sync Active
                     </span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300">
-                        AI Parent Hub
+                        Holiday Skip Enabled
                     </span>
                 </div>
                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Vista del Mar Community Hub</h1>
@@ -146,22 +146,38 @@
                     Just Keep Calm and Calendar On...
                 </p>
                 <p class="text-sm md:text-base text-gray-600">
-                    Build a custom calendar that combines your kids' exact bell schedules with the master Vista Del Mar school calendar.
+                    Customize your family's bell schedule invites. Automatically skips Thanksgiving, Winter Recess, Spring Break, and all school holidays.
                 </p>
             </div>
 
             <!-- Multi-Child Custom Calendar Sync Builder -->
             <section class="mb-10 max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200">
                 <div class="text-center mb-6">
-                    <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300 mb-2">
-                        Custom Family Calendar Sync
+                    <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300 mb-2">
+                        Skips All School Holidays & Breaks
                     </span>
                     <h2 class="text-xl md:text-2xl font-bold text-gray-900">Customize & Sync Your Family Calendar</h2>
                     <p class="text-xs md:text-sm text-gray-600 mt-1">
-                        Add your children below to combine their bell schedules with the Master School Calendar in 1 click!
+                        Add your children, select your invite style, and sync to your calendar.
                     </p>
                 </div>
 
+                <!-- Invite Style Preference -->
+                <div class="mb-6 bg-slate-50 p-4 rounded-lg border border-slate-200 max-w-lg mx-auto">
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Select Invite Style</label>
+                    <div class="space-y-2 text-xs font-medium text-gray-800">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="inviteStyle" value="combined" checked class="text-sky-600 focus:ring-sky-500">
+                            <span><strong>1 Combined Invite</strong> for Drop-off & Dismissal (e.g. Benny Drop-off 8:00 AM, Benny Dismissal 11:20 AM)</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="inviteStyle" value="separate" class="text-sky-600 focus:ring-sky-500">
+                            <span><strong>Separate Invites</strong> per Child per Day (e.g. Benny TK Bell Schedule 8:00 AM - 11:20 AM)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Children Container -->
                 <div id="childrenContainer" class="space-y-4 max-w-lg mx-auto mb-4">
                     <!-- Child 1 Row -->
                     <div class="child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative">
@@ -176,8 +192,8 @@
                                     <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
                                     <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
                                     <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
-                                    <option value="1st" selected>1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                                    <option value="2nd">2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                                    <option value="1st">1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
+                                    <option value="2nd" selected>2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
                                     <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
                                     <option value="4th_5th">4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
                                     <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
@@ -197,13 +213,16 @@
 
                 <!-- One-Click Sync Action Buttons -->
                 <div class="max-w-lg mx-auto space-y-3 pt-2 border-t border-gray-100">
-                    <button onclick="syncCombinedGoogle()" class="w-full button-primary py-3 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
-                        Sync Custom Family Calendar to Google Calendar
+                    <button onclick="downloadCustomICS()" class="w-full button-primary py-3.5 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
+                        Download Custom Calendar File (.ics) — Skips All Breaks!
                     </button>
-                    <button onclick="syncCombinedApple()" class="w-full button-secondary py-3 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
-                        Sync to Apple / Outlook Calendar (iCal)
+                    <button onclick="syncCombinedGoogle()" class="w-full button-secondary py-3 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
+                        Open in Google Calendar
                     </button>
                 </div>
+                <p class="text-[11px] text-gray-500 text-center mt-3">
+                    Tip: Downloading the <strong>.ics calendar file</strong> automatically excludes Thanksgiving, Winter Break, Spring Break, and all school holidays when imported into Apple Calendar or Google Calendar!
+                </p>
             </section>
 
             <!-- Embedded Google Calendar -->
@@ -357,102 +376,6 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- 5. Calm Morning Systemizer -->
-                <div class="prompt-card" data-category="routines">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800">
-                            Morning Routine Systemizer
-                        </h3>
-                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">Routines</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
-                        Builds backwards-mapped morning timelines with visual checklists and a 15-minute emergency buffer.
-                    </p>
-                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
-                        "Design a calm morning routine for a family with kids aged [ages] who need to leave by [time]. Build a backwards-mapped timeline by zones, include non-verbal visual cues to replace nagging, and add a 15-minute emergency 'running late' backup plan."
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            Copy Prompt
-                        </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Copy & Open Gemini
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 6. Voice Memo Story Journal -->
-                <div class="prompt-card" data-category="routines">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800">
-                            Voice-to-Text Kid Memory Journal
-                        </h3>
-                        <span class="text-xs bg-pink-100 text-pink-800 px-2 py-0.5 rounded font-medium">Memories</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
-                        Transcribes voice memos of funny or cute kid moments into a warm, dated childhood memory book.
-                    </p>
-                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
-                        "Here are transcribed voice memos from this week about my kids: [paste transcripts]. Please organize them into a readable format with dates, context, and a warm personal tone like a childhood memory book."
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            Copy Prompt
-                        </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Copy & Open Gemini
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 7. Medication Coordinator & Tracker -->
-                <div class="prompt-card" data-category="health">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800">
-                            Family Medication & Pill Tracker
-                        </h3>
-                        <span class="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded font-medium">Health</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
-                        Organizes complex medication schedules, screens drug interactions, and writes brief handoffs for school nurses.
-                    </p>
-                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
-                        "Help me organize a safe medication schedule for my child taking [medications & dosages]. Screen for potential side effects or food interactions, map doses to daily routines, calculate refill target dates, and write a brief handoff summary for the school nurse."
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            Copy Prompt
-                        </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Copy & Open Gemini
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 8. Boundary Refusal Script -->
-                <div class="prompt-card" data-category="mental">
-                    <div class="flex items-center justify-between mb-3">
-                        <h3 class="font-bold text-gray-800">
-                            Boundary Refusal Script Generator
-                        </h3>
-                        <span class="text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded font-medium">Boundaries</span>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-3 leading-relaxed">
-                        Generates a polite, firm refusal script to say 'no' to volunteer or committee tasks without false excuses.
-                    </p>
-                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-700 font-mono border border-gray-200 mb-3 select-all">
-                        "Write a polite, firm, and completely unambiguous refusal text message/email to turn down a request to [lead fundraiser / volunteer task]. Make it respectful, warm, but zero-guilt without giving unnecessary false excuses."
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="copyText(this)" class="flex-1 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 rounded text-xs font-semibold transition">
-                            Copy Prompt
-                        </button>
-                        <button onclick="openInGemini(this)" class="py-1.5 px-3 bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200 rounded text-xs font-semibold transition">
-                            Copy & Open Gemini
-                        </button>
-                    </div>
-                </div>
             </div>
 
             <!-- Recommended AI Tools for Families -->
@@ -489,33 +412,6 @@
                             <span class="text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
                         </div>
                         <p class="text-xs text-gray-600 leading-relaxed">Parental controls under Family Link allowing kids to use Gemini safely for homework.</p>
-                    </a>
-
-                    <!-- Google Read Along -->
-                    <a href="https://readalong.google.com" target="_blank" class="tool-card group block">
-                        <div class="flex items-center justify-between mb-1">
-                            <h4 class="font-bold text-emerald-900 text-sm group-hover:underline">Google Read Along</h4>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
-                        </div>
-                        <p class="text-xs text-gray-600 leading-relaxed">Speech-based AI reading assistant that gives young kids verbal reading guidance.</p>
-                    </a>
-
-                    <!-- Google Arts & Culture AI -->
-                    <a href="https://artsandculture.google.com/project/ai-experiments" target="_blank" class="tool-card group block">
-                        <div class="flex items-center justify-between mb-1">
-                            <h4 class="font-bold text-amber-900 text-sm group-hover:underline">Google Arts AI</h4>
-                            <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-semibold">Google</span>
-                        </div>
-                        <p class="text-xs text-gray-600 leading-relaxed">Interactive AI experiments and educational creative games for elementary kids.</p>
-                    </a>
-
-                    <!-- Bedtimestory.ai -->
-                    <a href="https://bedtimestory.ai" target="_blank" class="tool-card group block">
-                        <div class="flex items-center justify-between mb-1">
-                            <h4 class="font-bold text-indigo-900 text-sm group-hover:underline">Bedtimestory.ai</h4>
-                            <span class="text-[10px] bg-indigo-100 text-indigo-800 px-1.5 py-0.5 rounded font-semibold">Family AI</span>
-                        </div>
-                        <p class="text-xs text-gray-600 leading-relaxed">AI story generator creating illustrated personalized bedtime stories for kids.</p>
                     </a>
                 </div>
             </section>
@@ -602,6 +498,21 @@
             'middle': { label: 'Middle School Bell Schedule', text: '8:00 AM - 2:35 PM (Minimum Day: 1:15 PM)', st: '080000', et: '143500' }
         };
 
+        // Capo USD 2026-2027 Excluded Holiday Dates (EXDATE) in iCal YYYYMMDD format
+        const exdates = [
+            '20260907', // Labor Day
+            '20261012', // Staff Dev Day
+            '20261111', // Veterans Day
+            '20261123', '20261124', '20261125', '20261126', '20261127', // Thanksgiving Recess
+            '20261221', '20261222', '20261223', '20261224', '20261225', // Winter Recess Wk 1
+            '20261228', '20261229', '20261230', '20261231', '20270101', // Winter Recess Wk 2
+            '20270118', // MLK Day
+            '20270212', // Lincoln Day
+            '20270215', // Washington Day
+            '20270405', '20270406', '20270407', '20270408', '20270409', // Spring Recess
+            '20270531'  // Memorial Day
+        ];
+
         function addChildRow() {
             const container = document.getElementById('childrenContainer');
             const newRow = document.createElement('div');
@@ -631,6 +542,79 @@
             container.appendChild(newRow);
         }
 
+        function downloadCustomICS() {
+            const rows = document.querySelectorAll('.child-row');
+            const style = document.querySelector('input[name="inviteStyle"]:checked').value;
+            let events = [];
+
+            rows.forEach((row, idx) => {
+                const name = row.querySelector('.child-name').value.trim() || `Child ${idx + 1}`;
+                const gradeKey = row.querySelector('.child-grade').value;
+                const config = gradeConfigs[gradeKey];
+                
+                // Exclude Exdates string
+                const exdateString = exdates.map(d => `EXDATE;TZID=America/Los_Angeles:${d}T${config.st}`).join('\r\n');
+
+                if (style === 'combined') {
+                    // Separate Drop-off & Dismissal events for the child
+                    events.push(
+                        `BEGIN:VEVENT\r\n` +
+                        `SUMMARY:${name} School Drop-off (8:00 AM)\r\n` +
+                        `DESCRIPTION:${name} Drop-off at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
+                        `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `DTSTART;TZID=America/Los_Angeles:20260818T080000\r\n` +
+                        `DTEND;TZID=America/Los_Angeles:20260818T081500\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
+                        `${exdateString}\r\n` +
+                        `END:VEVENT`
+                    );
+                    events.push(
+                        `BEGIN:VEVENT\r\n` +
+                        `SUMMARY:${name} Dismissal (${config.label})\r\n` +
+                        `DESCRIPTION:${name} Dismissal Pickup at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
+                        `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `DTSTART;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
+                        `DTEND;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
+                        `${exdateString}\r\n` +
+                        `END:VEVENT`
+                    );
+                } else {
+                    // 1 Block Event per child
+                    events.push(
+                        `BEGIN:VEVENT\r\n` +
+                        `SUMMARY:${name}'s ${config.label}\r\n` +
+                        `DESCRIPTION:${name} Bell Schedule at Vista Del Mar Elementary School.\\nRegular: ${config.text}\r\n` +
+                        `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `DTSTART;TZID=America/Los_Angeles:20260818T${config.st}\r\n` +
+                        `DTEND;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
+                        `${exdateString}\r\n` +
+                        `END:VEVENT`
+                    );
+                }
+            });
+
+            const icsContent = 
+                `BEGIN:VCALENDAR\r\n` +
+                `VERSION:2.0\r\n` +
+                `PRODID:-//Vista Del Mar Mako Community Hub//EN\r\n` +
+                `CALSCALE:GREGORIAN\r\n` +
+                `METHOD:PUBLISH\r\n` +
+                `X-WR-CALNAME:Mako Family Custom Bell Schedule\r\n` +
+                `X-WR-TIMEZONE:America/Los_Angeles\r\n` +
+                events.join('\r\n') + '\r\n' +
+                `END:VCALENDAR`;
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('download', 'mako_family_custom_bell_schedule.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
         function syncCombinedGoogle() {
             const rows = document.querySelectorAll('.child-row');
             let titles = [];
@@ -645,18 +629,13 @@
             });
             
             const combinedTitle = encodeURIComponent(titles.join(' & '));
-            const detailsText = encodeURIComponent(`Vista Del Mar Family Schedule:\n\n` + detailsList.join('\n') + `\n\nLocation: Vista Del Mar Elementary School\nAutomated by VdM Mako Hub.`);
+            const detailsText = encodeURIComponent(`Vista Del Mar Family Schedule:\n\n` + detailsList.join('\n') + `\n\nLocation: Vista Del Mar Elementary School\nAutomated by VdM Mako Hub.\nNote: Excludes Thanksgiving, Winter Recess, and Spring Break.`);
             const location = encodeURIComponent('Vista Del Mar Elementary School, San Clemente, CA');
             
             const startDate = '20260818';
             const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${combinedTitle}&dates=${startDate}T080000/${startDate}T140500&details=${detailsText}&location=${location}&recur=RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`;
             
             window.open(googleUrl, '_blank');
-        }
-
-        function syncCombinedApple() {
-            const webcalUrl = 'webcal://calendar.google.com/calendar/ical/dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com/public/basic.ics';
-            window.location.href = webcalUrl;
         }
 
         function submitPromptEmail() {
@@ -717,7 +696,6 @@
             const card = button.closest('.prompt-card');
             const promptText = card.querySelector('.select-all').innerText.trim();
             
-            // Auto-copy prompt to clipboard first, then open Gemini tab!
             navigator.clipboard.writeText(promptText).then(() => {
                 const originalText = button.innerText;
                 button.innerText = 'Copied! Opening Gemini...';
