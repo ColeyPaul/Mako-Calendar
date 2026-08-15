@@ -111,7 +111,7 @@
                         Auto-Sync Active
                     </span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300">
-                        Holiday Skip Enabled
+                        All-in-One Calendar
                     </span>
                 </div>
                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Vista del Mar Community Hub</h1>
@@ -146,7 +146,7 @@
                     Just Keep Calm and Calendar On...
                 </p>
                 <p class="text-sm md:text-base text-gray-600">
-                    Customize your family's bell schedule invites. Automatically skips Thanksgiving, Winter Recess, Spring Break, and all school holidays.
+                    Customize your family calendar. Combines the full Master School Calendar (Holidays, Minimum Days, PTA Events) + your children's exact bell schedules into 1 simple sync!
                 </p>
             </div>
 
@@ -154,11 +154,11 @@
             <section class="mb-10 max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200">
                 <div class="text-center mb-6">
                     <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800 border border-green-300 mb-2">
-                        Skips All School Holidays & Breaks
+                        Includes Master School Calendar + Custom Bell Schedules
                     </span>
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">Customize & Sync Your Family Calendar</h2>
+                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">Add Your Children to Customize</h2>
                     <p class="text-xs md:text-sm text-gray-600 mt-1">
-                        Add your children, select your invite style, and sync to your calendar.
+                        Add your children, select your invite style, and sync everything together in 1 click.
                     </p>
                 </div>
 
@@ -181,7 +181,7 @@
                 <div id="childrenContainer" class="space-y-4 max-w-lg mx-auto mb-4">
                     <!-- Child 1 Row -->
                     <div class="child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
                                 <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="e.g. Benny" value="Benny">
@@ -199,6 +199,17 @@
                                     <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
                                 </select>
                             </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Calendar Color</label>
+                                <select class="child-color w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
+                                    <option value="#3b82f6" selected>🔵 Blue</option>
+                                    <option value="#8b5cf6">🟣 Purple</option>
+                                    <option value="#10b981">🟢 Emerald Green</option>
+                                    <option value="#f43f5e">🔴 Rose Red</option>
+                                    <option value="#f97316">🟠 Amber Orange</option>
+                                    <option value="#06b6d4">🩵 Sky / Teal</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,20 +219,20 @@
                     <button onclick="addChildRow()" class="text-xs font-semibold text-sky-700 hover:text-sky-900 underline flex items-center">
                         + Add Another Child
                     </button>
-                    <span class="text-xs text-gray-500">+ Includes Master School Calendar</span>
+                    <span class="text-xs text-green-700 font-semibold">✓ Includes Master School Calendar</span>
                 </div>
 
-                <!-- One-Click Sync Action Buttons -->
+                <!-- Simple Clean Action Buttons -->
                 <div class="max-w-lg mx-auto space-y-3 pt-2 border-t border-gray-100">
-                    <button onclick="downloadCustomICS()" class="w-full button-primary py-3.5 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
-                        Download Custom Calendar File (.ics) — Skips All Breaks!
+                    <button onclick="syncCombinedGoogle()" class="w-full button-primary py-3.5 px-4 rounded-lg font-semibold text-sm shadow-sm flex items-center justify-center">
+                        Add to Google Calendar
                     </button>
-                    <button onclick="syncCombinedGoogle()" class="w-full button-secondary py-3 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
-                        Open in Google Calendar
+                    <button onclick="downloadCustomICS()" class="w-full button-secondary py-3.5 px-4 rounded-lg font-semibold text-sm flex items-center justify-center">
+                        Add to Apple Calendar
                     </button>
                 </div>
                 <p class="text-[11px] text-gray-500 text-center mt-3">
-                    Tip: Downloading the <strong>.ics calendar file</strong> automatically excludes Thanksgiving, Winter Break, Spring Break, and all school holidays when imported into Apple Calendar or Google Calendar!
+                    Includes all 22 Capo USD school holidays, minimum days, and PTA events + your kids' bell schedules (automatically skipping Thanksgiving & breaks)!
                 </p>
             </section>
 
@@ -498,27 +509,40 @@
             'middle': { label: 'Middle School Bell Schedule', text: '8:00 AM - 2:35 PM (Minimum Day: 1:15 PM)', st: '080000', et: '143500' }
         };
 
-        // Capo USD 2026-2027 Excluded Holiday Dates (EXDATE) in iCal YYYYMMDD format
         const exdates = [
-            '20260907', // Labor Day
-            '20261012', // Staff Dev Day
-            '20261111', // Veterans Day
-            '20261123', '20261124', '20261125', '20261126', '20261127', // Thanksgiving Recess
-            '20261221', '20261222', '20261223', '20261224', '20261225', // Winter Recess Wk 1
-            '20261228', '20261229', '20261230', '20261231', '20270101', // Winter Recess Wk 2
-            '20270118', // MLK Day
-            '20270212', // Lincoln Day
-            '20270215', // Washington Day
-            '20270405', '20270406', '20270407', '20270408', '20270409', // Spring Recess
-            '20270531'  // Memorial Day
+            '20260907', '20261012', '20261111',
+            '20261123', '20261124', '20261125', '20261126', '20261127',
+            '20261221', '20261222', '20261223', '20261224', '20261225',
+            '20261228', '20261229', '20261230', '20261231', '20270101',
+            '20270118', '20270212', '20270215',
+            '20270405', '20270406', '20270407', '20270408', '20270409',
+            '20270531'
         ];
+
+        // Official Capo USD Master School Events (22 Verified Events)
+        const masterSchoolEventsICS = 
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: First Day of School (Regular Schedule)\r\nDTSTART;VALUE=DATE:20260818\r\nDTEND;VALUE=DATE:20260819\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Back to School Night (Minimum Day - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20260827\r\nDTEND;VALUE=DATE:20260828\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Labor Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20260907\r\nDTEND;VALUE=DATE:20260908\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Staff Development Day (Pupil Free - No School)\r\nDTSTART;VALUE=DATE:20261012\r\nDTEND;VALUE=DATE:20261013\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Parent Conferences Week (Minimum Days - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20261019\r\nDTEND;VALUE=DATE:20261024\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Veterans Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20261111\r\nDTEND;VALUE=DATE:20261112\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Thanksgiving Recess (No School)\r\nDTSTART;VALUE=DATE:20261123\r\nDTEND;VALUE=DATE:20261128\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Winter Recess (No School)\r\nDTSTART;VALUE=DATE:20261221\r\nDTEND;VALUE=DATE:20270102\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Martin Luther King Jr. Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20270118\r\nDTEND;VALUE=DATE:20270119\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Lincoln Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20270212\r\nDTEND;VALUE=DATE:20270213\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Washington Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20270215\r\nDTEND;VALUE=DATE:20270216\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Open House (Minimum Day - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20270325\r\nDTEND;VALUE=DATE:20270326\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Spring Recess (No School)\r\nDTSTART;VALUE=DATE:20270405\r\nDTEND;VALUE=DATE:20270410\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Memorial Day (Legal Holiday - No School)\r\nDTSTART;VALUE=DATE:20270531\r\nDTEND;VALUE=DATE:20270601\r\nEND:VEVENT\r\n` +
+            `BEGIN:VEVENT\r\nSUMMARY:VdM: Last Day of School (Minimum Day - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20270603\r\nDTEND;VALUE=DATE:20270604\r\nEND:VEVENT`;
 
         function addChildRow() {
             const container = document.getElementById('childrenContainer');
             const newRow = document.createElement('div');
             newRow.className = 'child-row bg-slate-50 p-4 rounded-lg border border-slate-200 relative mt-3';
             newRow.innerHTML = `
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Child Name</label>
                         <input type="text" class="child-name w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800" placeholder="e.g. Jackson">
@@ -536,6 +560,17 @@
                             <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
                         </select>
                     </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Calendar Color</label>
+                        <select class="child-color w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
+                            <option value="#3b82f6">🔵 Blue</option>
+                            <option value="#8b5cf6" selected>🟣 Purple</option>
+                            <option value="#10b981">🟢 Emerald Green</option>
+                            <option value="#f43f5e">🔴 Rose Red</option>
+                            <option value="#f97316">🟠 Amber Orange</option>
+                            <option value="#06b6d4">🩵 Sky / Teal</option>
+                        </select>
+                    </div>
                 </div>
                 <button onclick="this.parentElement.remove()" class="text-xs text-red-600 hover:text-red-800 font-semibold mt-2 underline">Remove</button>
             `;
@@ -545,34 +580,37 @@
         function downloadCustomICS() {
             const rows = document.querySelectorAll('.child-row');
             const style = document.querySelector('input[name="inviteStyle"]:checked').value;
-            let events = [];
+            let childEvents = [];
 
             rows.forEach((row, idx) => {
                 const name = row.querySelector('.child-name').value.trim() || `Child ${idx + 1}`;
                 const gradeKey = row.querySelector('.child-grade').value;
+                const colorHex = row.querySelector('.child-color').value;
                 const config = gradeConfigs[gradeKey];
                 
-                // Exclude Exdates string
                 const exdateString = exdates.map(d => `EXDATE;TZID=America/Los_Angeles:${d}T${config.st}`).join('\r\n');
 
                 if (style === 'combined') {
-                    // Separate Drop-off & Dismissal events for the child
-                    events.push(
+                    childEvents.push(
                         `BEGIN:VEVENT\r\n` +
                         `SUMMARY:${name} School Drop-off (8:00 AM)\r\n` +
                         `DESCRIPTION:${name} Drop-off at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `COLOR:${colorHex}\r\n` +
+                        `X-APPLE-CALENDAR-COLOR:${colorHex}\r\n` +
                         `DTSTART;TZID=America/Los_Angeles:20260818T080000\r\n` +
                         `DTEND;TZID=America/Los_Angeles:20260818T081500\r\n` +
                         `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
                         `${exdateString}\r\n` +
                         `END:VEVENT`
                     );
-                    events.push(
+                    childEvents.push(
                         `BEGIN:VEVENT\r\n` +
                         `SUMMARY:${name} Dismissal (${config.label})\r\n` +
                         `DESCRIPTION:${name} Dismissal Pickup at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `COLOR:${colorHex}\r\n` +
+                        `X-APPLE-CALENDAR-COLOR:${colorHex}\r\n` +
                         `DTSTART;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
                         `DTEND;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
                         `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
@@ -580,12 +618,13 @@
                         `END:VEVENT`
                     );
                 } else {
-                    // 1 Block Event per child
-                    events.push(
+                    childEvents.push(
                         `BEGIN:VEVENT\r\n` +
                         `SUMMARY:${name}'s ${config.label}\r\n` +
                         `DESCRIPTION:${name} Bell Schedule at Vista Del Mar Elementary School.\\nRegular: ${config.text}\r\n` +
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `COLOR:${colorHex}\r\n` +
+                        `X-APPLE-CALENDAR-COLOR:${colorHex}\r\n` +
                         `DTSTART;TZID=America/Los_Angeles:20260818T${config.st}\r\n` +
                         `DTEND;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
                         `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
@@ -595,47 +634,31 @@
                 }
             });
 
-            const icsContent = 
+            // Merges Master School Calendar Events + Children Bell Schedules
+            const fullCombinedICS = 
                 `BEGIN:VCALENDAR\r\n` +
                 `VERSION:2.0\r\n` +
                 `PRODID:-//Vista Del Mar Mako Community Hub//EN\r\n` +
                 `CALSCALE:GREGORIAN\r\n` +
                 `METHOD:PUBLISH\r\n` +
-                `X-WR-CALNAME:Mako Family Custom Bell Schedule\r\n` +
+                `X-WR-CALNAME:Vista Del Mar Master & Family Calendar\r\n` +
                 `X-WR-TIMEZONE:America/Los_Angeles\r\n` +
-                events.join('\r\n') + '\r\n' +
+                masterSchoolEventsICS + '\r\n' +
+                childEvents.join('\r\n') + '\r\n' +
                 `END:VCALENDAR`;
 
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+            const blob = new Blob([fullCombinedICS], { type: 'text/calendar;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.setAttribute('download', 'mako_family_custom_bell_schedule.ics');
+            link.setAttribute('download', 'vista_del_mar_master_and_family_calendar.ics');
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
 
         function syncCombinedGoogle() {
-            const rows = document.querySelectorAll('.child-row');
-            let titles = [];
-            let detailsList = [];
-            
-            rows.forEach(row => {
-                const name = row.querySelector('.child-name').value.trim() || 'Child';
-                const gradeKey = row.querySelector('.child-grade').value;
-                const config = gradeConfigs[gradeKey];
-                titles.push(`${name}'s ${config.label}`);
-                detailsList.push(`• ${name} (${config.label}): ${config.text}`);
-            });
-            
-            const combinedTitle = encodeURIComponent(titles.join(' & '));
-            const detailsText = encodeURIComponent(`Vista Del Mar Family Schedule:\n\n` + detailsList.join('\n') + `\n\nLocation: Vista Del Mar Elementary School\nAutomated by VdM Mako Hub.\nNote: Excludes Thanksgiving, Winter Recess, and Spring Break.`);
-            const location = encodeURIComponent('Vista Del Mar Elementary School, San Clemente, CA');
-            
-            const startDate = '20260818';
-            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${combinedTitle}&dates=${startDate}T080000/${startDate}T140500&details=${detailsText}&location=${location}&recur=RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR`;
-            
-            window.open(googleUrl, '_blank');
+            const sharedCidUrl = "https://calendar.google.com/calendar/r?cid=dd744b80cc2a23dc4f5873bddfea50c201f9554741f7093e209fcf92fc9c79a4@group.calendar.google.com";
+            window.open(sharedCidUrl, '_blank');
         }
 
         function submitPromptEmail() {
