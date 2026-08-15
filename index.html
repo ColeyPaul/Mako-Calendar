@@ -116,7 +116,7 @@
                 </div>
                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">Vista del Mar Community Hub</h1>
                 <p class="text-gray-600 text-sm md:text-base leading-relaxed">
-                    Custom family calendar builder, whole-school master calendar, and AI resources for parents.
+                    Mako calendar builder and AI resources for parents
                 </p>
             </div>
         </div>
@@ -129,13 +129,10 @@
                 School Calendar & Bell Schedule
             </button>
             <button onclick="switchTab('ai-mom-tab')" id="btn-ai-mom-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
-                AI Toolkit & Life Hacks
+                Parent AI Toolkits
             </button>
-            <button onclick="switchTab('sponsor-tab')" id="btn-sponsor-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
-                Sponsor & Consult
-            </button>
-            <button onclick="switchTab('submit-tab')" id="btn-submit-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
-                Submit Event
+            <button onclick="switchTab('contact-tab')" id="btn-contact-tab" class="tab-button py-2.5 px-5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900">
+                Contact & Consult
             </button>
         </div>
 
@@ -245,7 +242,7 @@
             </section>
         </div>
 
-        <!-- TAB 2: AI TOOLKIT & LIFE HACKS FOR MOMS -->
+        <!-- TAB 2: PARENT AI TOOLKITS -->
         <div id="ai-mom-tab" class="tab-content">
             <div class="text-center mb-6 max-w-2xl mx-auto">
                 <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 border border-purple-300 mb-2">
@@ -428,66 +425,75 @@
             </section>
         </div>
 
-        <!-- TAB 3: SPONSOR & CONSULT -->
-        <div id="sponsor-tab" class="tab-content">
+        <!-- TAB 3: CONTACT & CONSULT -->
+        <div id="contact-tab" class="tab-content">
             <div class="text-center mb-8 max-w-2xl mx-auto">
                 <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300 mb-2">
-                    Partnerships & Consultation
+                    Community & Business Connect
                 </span>
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">Sponsor, Advertise & Consult</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Contact, Consult & Submit</h2>
                 <p class="text-gray-600 text-sm md:text-base">
-                    Partner with the Vista Del Mar Mako Community Hub or consult with Nicole Paul to build custom AI workflows for your family or organization.
+                    Submit events to the calendar, inquire about sponsorships & ads, or consult with Nicole Paul on custom AI workflows.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
-                <!-- Sponsor / Advertise Card -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+            <!-- Unified Community & Event Form Card -->
+            <section class="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-sky-200 max-w-3xl mx-auto mb-10 text-center">
+                <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-300 mb-3">
+                    Unified Submission Form
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Mako Community Hub Form</h3>
+                <p class="text-sm text-gray-600 max-w-xl mx-auto mb-6">
+                    Use our central form to submit school events, request sponsorship/advertising, suggest AI prompt additions, or request a 1-on-1 consultation.
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="inline-block button-primary py-3.5 px-8 rounded-lg font-semibold text-sm shadow-sm">
+                    Open Community & Event Form
+                </a>
+            </section>
+
+            <!-- Direct Contact Options Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
+                <!-- Submit an Event Card -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-100 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">Sponsor or Advertise Your Business</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed mb-4">
-                            Reach local Vista Del Mar families, school parents, and community members by sponsoring a section or listing your product/service on the Mako Community Hub.
-                        </p>
+                        <h4 class="font-bold text-gray-800 text-base mb-1">Submit School Event</h4>
+                        <p class="text-xs text-gray-600 mb-4">Planning a class party, PTA event, or noticed a missing school date?</p>
                     </div>
-                    <button onclick="sponsorInquiryEmail()" class="w-full button-primary py-2.5 px-4 rounded-lg font-semibold text-xs text-center shadow-sm">
-                        Inquire About Sponsorship & Ads
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="w-full button-secondary py-2 px-3 rounded-lg font-semibold text-xs text-center">
+                        Submit Event
+                    </a>
+                </div>
+
+                <!-- Sponsor & Ads Card -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-emerald-100 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-base mb-1">Sponsor / Advertise</h4>
+                        <p class="text-xs text-gray-600 mb-4">Promote your business or sponsor a section on the Mako Hub.</p>
+                    </div>
+                    <button onclick="sponsorInquiryEmail()" class="w-full button-secondary py-2 px-3 rounded-lg font-semibold text-xs text-center">
+                        Inquire About Sponsorship
                     </button>
                 </div>
 
                 <!-- AI Consultation Card -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-sky-100 flex flex-col justify-between">
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-purple-100 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">1-on-1 AI Workflow Consultation</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed mb-4">
-                            Want to build custom AI prompts, calendar automation, or digital systems tailored to your household, business, or PTA? Book a consultation with Nicole.
-                        </p>
+                        <h4 class="font-bold text-gray-800 text-base mb-1">1-on-1 AI Consultation</h4>
+                        <p class="text-xs text-gray-600 mb-4">Book a session to build custom AI workflows for your household or organization.</p>
                     </div>
-                    <button onclick="consultInquiryEmail()" class="w-full button-primary py-2.5 px-4 rounded-lg font-semibold text-xs text-center shadow-sm">
-                        Schedule a Consultation
+                    <button onclick="consultInquiryEmail()" class="w-full button-secondary py-2 px-3 rounded-lg font-semibold text-xs text-center">
+                        Schedule Consultation
                     </button>
                 </div>
             </div>
-        </div>
 
-        <!-- TAB 4: SUBMIT EVENT -->
-        <div id="submit-tab" class="tab-content">
-            <section class="bg-white p-6 md:p-8 rounded-xl shadow-sm mb-12 text-center max-w-2xl mx-auto border border-blue-100">
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-3">Add a Mako Community Calendar Event</h2>
-                <p class="text-gray-600 text-sm md:text-base mb-6">
-                    Planning a TK Early Birds or 2nd Grade class party, room parent event, or noticed a missing school date? Submit your event details below to be reviewed and added to the official calendar.
+            <!-- Contact & Support Note (Moved inside Contact & Consult Tab) -->
+            <div class="text-center text-gray-600 text-sm max-w-xl mx-auto space-y-2 mt-8 pt-6 border-t border-gray-100">
+                <p>Questions or suggestions? Contact <a href="mailto:mattandnicolepaul@gmail.com" class="text-sky-700 underline font-medium">mattandnicolepaul@gmail.com</a></p>
+                <p class="text-xs text-gray-500">
+                    Created by a Mako parent for Vista Del Mar families.
                 </p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdokzhSHvM7Ih6QfC_YhdkU8dqW4X_XjyoGOmUQv79JJ40FPA/viewform?usp=pp_url" target="_blank" class="inline-block button-primary py-3 px-8 rounded-lg font-semibold shadow-sm">
-                    Submit Event Details
-                </a>
-            </section>
-        </div>
-
-        <!-- Contact & Support -->
-        <div class="text-center text-gray-600 text-sm max-w-xl mx-auto space-y-2 mt-8">
-            <p>Questions or suggestions? Contact <a href="mailto:mattandnicolepaul@gmail.com" class="text-sky-700 underline font-medium">mattandnicolepaul@gmail.com</a></p>
-            <p class="text-xs text-gray-500">
-                Created by a Mako parent for Vista Del Mar families.
-            </p>
+            </div>
         </div>
     </main>
 
@@ -519,7 +525,6 @@
             '20270531'
         ];
 
-        // Official Capo USD Master School Events (22 Verified Events)
         const masterSchoolEventsICS = 
             `BEGIN:VEVENT\r\nSUMMARY:VdM: First Day of School (Regular Schedule)\r\nDTSTART;VALUE=DATE:20260818\r\nDTEND;VALUE=DATE:20260819\r\nEND:VEVENT\r\n` +
             `BEGIN:VEVENT\r\nSUMMARY:VdM: Back to School Night (Minimum Day - Dismissal at 12:45 PM)\r\nDTSTART;VALUE=DATE:20260827\r\nDTEND;VALUE=DATE:20260828\r\nEND:VEVENT\r\n` +
@@ -634,7 +639,6 @@
                 }
             });
 
-            // Merges Master School Calendar Events + Children Bell Schedules
             const fullCombinedICS = 
                 `BEGIN:VCALENDAR\r\n` +
                 `VERSION:2.0\r\n` +
