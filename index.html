@@ -196,14 +196,15 @@
                                 <div>
                                     <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Grade Level</label>
                                     <select class="child-grade w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
-                                        <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
-                                        <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
-                                        <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
-                                        <option value="1st">1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                                        <option value="2nd" selected>2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                                        <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                                        <option value="4th_5th">4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
-                                        <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
+                                        <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:53 AM (Min: 11:35 AM)</option>
+                                        <option value="tk_late">TK (Late Owls) — 9:30 AM - 1:23 PM (Tue: 11:53 AM, Min: 11:35 AM)</option>
+                                        <option value="k">Kindergarten — 8:15 AM - 2:25 PM (Tue: 1:10 PM, Min: 12:35 PM)</option>
+                                        <option value="1st">1st Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                                        <option value="2nd" selected>2nd Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                                        <option value="3rd">3rd Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                                        <option value="4th">4th Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                                        <option value="5th">5th Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                                        <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:40 PM (Tue: 1:40 PM, Min: 12:15 PM)</option>
                                     </select>
                                 </div>
                             </div>
@@ -562,14 +563,15 @@
 
     <script>
         const gradeConfigs = {
-            'tk_early': { label: 'TK Bell Schedule', text: '8:00 AM - 11:20 AM (Minimum Day: 11:20 AM)', st: '080000', et: '112000' },
-            'tk_late': { label: 'TK Late Birds Bell Schedule', text: '9:30 AM - 12:50 PM (Minimum Day: 12:50 PM)', st: '093000', et: '125000' },
-            'k': { label: 'Kindergarten Bell Schedule', text: '8:00 AM - 1:30 PM (Minimum Day: 12:15 PM)', st: '080000', et: '133000' },
-            '1st': { label: '1st Grade Bell Schedule', text: '8:00 AM - 2:05 PM (Minimum Day: 12:45 PM)', st: '080000', et: '140500' },
-            '2nd': { label: '2nd Grade Bell Schedule', text: '8:00 AM - 2:05 PM (Minimum Day: 12:45 PM)', st: '080000', et: '140500' },
-            '3rd': { label: '3rd Grade Bell Schedule', text: '8:00 AM - 2:05 PM (Minimum Day: 12:45 PM)', st: '080000', et: '140500' },
-            '4th_5th': { label: '4th-5th Grade Bell Schedule', text: '8:00 AM - 2:15 PM (Minimum Day: 12:45 PM)', st: '080000', et: '141500' },
-            'middle': { label: 'Middle School Bell Schedule', text: '8:00 AM - 2:35 PM (Middle School)', st: '080000', et: '143500' }
+            'tk_early': { label: 'TK Early Birds Bell Schedule', text: '8:00 AM - 11:53 AM (Min Day: 11:35 AM)', st: '080000', et: '115300', st_tue: '080000', et_tue: '115300' },
+            'tk_late': { label: 'TK Late Owls Bell Schedule', text: '9:30 AM - 1:23 PM (Tuesday: 8:00 AM - 11:53 AM, Min Day: 11:35 AM)', st: '093000', et: '132300', st_tue: '080000', et_tue: '115300' },
+            'k': { label: 'Kindergarten Bell Schedule', text: '8:15 AM - 2:25 PM (Tuesday: 1:10 PM, Min Day: 12:35 PM)', st: '081500', et: '142500', st_tue: '081500', et_tue: '131000' },
+            '1st': { label: '1st Grade Bell Schedule', text: '8:15 AM - 2:35 PM (Tuesday: 1:20 PM, Min Day: 12:45 PM)', st: '081500', et: '143500', st_tue: '081500', et_tue: '132000' },
+            '2nd': { label: '2nd Grade Bell Schedule', text: '8:15 AM - 2:35 PM (Tuesday: 1:20 PM, Min Day: 12:45 PM)', st: '081500', et: '143500', st_tue: '081500', et_tue: '132000' },
+            '3rd': { label: '3rd Grade Bell Schedule', text: '8:15 AM - 2:35 PM (Tuesday: 1:20 PM, Min Day: 12:45 PM)', st: '081500', et: '143500', st_tue: '081500', et_tue: '132000' },
+            '4th': { label: '4th Grade Bell Schedule', text: '8:15 AM - 2:35 PM (Tuesday: 1:20 PM, Min Day: 12:45 PM)', st: '081500', et: '143500', st_tue: '081500', et_tue: '132000' },
+            '5th': { label: '5th Grade Bell Schedule', text: '8:15 AM - 2:35 PM (Tuesday: 1:20 PM, Min Day: 12:45 PM)', st: '081500', et: '143500', st_tue: '081500', et_tue: '132000' },
+            'middle': { label: 'Middle School Bell Schedule', text: '8:00 AM - 2:40 PM (Tuesday: 1:40 PM, Min Day: 12:15 PM)', st: '080000', et: '144000', st_tue: '080000', et_tue: '134000' }
         };
 
         const exdates = [
@@ -619,14 +621,15 @@
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Grade Level</label>
                         <select class="child-grade w-full px-3 py-2 rounded border border-gray-300 text-sm font-medium text-gray-800 bg-white">
-                            <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:20 AM</option>
-                            <option value="tk_late">TK (Late Birds) — 9:30 AM - 12:50 PM</option>
-                            <option value="k">Kindergarten — 8:00 AM - 1:30 PM (Min: 12:15 PM)</option>
-                            <option value="1st">1st Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                            <option value="2nd">2nd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                            <option value="3rd">3rd Grade — 8:00 AM - 2:05 PM (Min: 12:45 PM)</option>
-                            <option value="4th_5th" selected>4th - 5th Grade — 8:00 AM - 2:15 PM (Min: 12:45 PM)</option>
-                            <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:35 PM (Min: 1:15 PM)</option>
+                            <option value="tk_early">TK (Early Birds) — 8:00 AM - 11:53 AM (Min: 11:35 AM)</option>
+                            <option value="tk_late">TK (Late Owls) — 9:30 AM - 1:23 PM (Tue: 11:53 AM, Min: 11:35 AM)</option>
+                            <option value="k">Kindergarten — 8:15 AM - 2:25 PM (Tue: 1:10 PM, Min: 12:35 PM)</option>
+                            <option value="1st">1st Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                            <option value="2nd" selected>2nd Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                            <option value="3rd">3rd Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                            <option value="4th">4th Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                            <option value="5th">5th Grade — 8:15 AM - 2:35 PM (Tue: 1:20 PM, Min: 12:45 PM)</option>
+                            <option value="middle">6th - 8th Grade (Middle) — 8:00 AM - 2:40 PM (Tue: 1:40 PM, Min: 12:15 PM)</option>
                         </select>
                     </div>
                 </div>
@@ -645,20 +648,36 @@
                 const gradeKey = row.querySelector('.child-grade').value;
                 const config = gradeConfigs[gradeKey];
                 
-                const exdateString = exdates.map(d => `EXDATE;TZID=America/Los_Angeles:${d}T${config.st}`).join('\r\n');
+                const exdateStringSt = exdates.map(d => `EXDATE;TZID=America/Los_Angeles:${d}T${config.st}`).join('\r\n');
+                const exdateStringStTue = exdates.map(d => `EXDATE;TZID=America/Los_Angeles:${d}T${config.st_tue || config.st}`).join('\r\n');
 
                 if (style === 'combined') {
+                    // Regular Days Drop-off (Mon, Wed, Thu, Fri)
                     childEvents.push(
                         `BEGIN:VEVENT\r\n` +
-                        `SUMMARY:${name} School Drop-off (8:00 AM)\r\n` +
+                        `SUMMARY:${name} School Drop-off (${config.st === '080000' ? '8:00 AM' : config.st === '081500' ? '8:15 AM' : '9:30 AM'})\r\n` +
                         `DESCRIPTION:${name} Drop-off at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
-                        `DTSTART;TZID=America/Los_Angeles:20260818T080000\r\n` +
-                        `DTEND;TZID=America/Los_Angeles:20260818T081500\r\n` +
-                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
-                        `${exdateString}\r\n` +
+                        `DTSTART;TZID=America/Los_Angeles:20260818T${config.st}\r\n` +
+                        `DTEND;TZID=America/Los_Angeles:20260818T${config.st}\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,WE,TH,FR\r\n` +
+                        `${exdateStringSt}\r\n` +
                         `END:VEVENT`
                     );
+                    // Tuesday Drop-off
+                    childEvents.push(
+                        `BEGIN:VEVENT\r\n` +
+                        `SUMMARY:${name} School Drop-off (${(config.st_tue || config.st) === '080000' ? '8:00 AM' : '8:15 AM'})\r\n` +
+                        `DESCRIPTION:${name} Tuesday Drop-off at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
+                        `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `DTSTART;TZID=America/Los_Angeles:20260818T${config.st_tue || config.st}\r\n` +
+                        `DTEND;TZID=America/Los_Angeles:20260818T${config.st_tue || config.st}\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=TU\r\n` +
+                        `${exdateStringStTue}\r\n` +
+                        `END:VEVENT`
+                    );
+
+                    // Regular Days Dismissal (Mon, Wed, Thu, Fri)
                     childEvents.push(
                         `BEGIN:VEVENT\r\n` +
                         `SUMMARY:${name} Dismissal (${config.label})\r\n` +
@@ -666,20 +685,45 @@
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
                         `DTSTART;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
                         `DTEND;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
-                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
-                        `${exdateString}\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,WE,TH,FR\r\n` +
+                        `${exdates.map(d => `EXDATE;TZID=America/Los_Angeles:${d}T${config.et}`).join('\r\n')}\r\n` +
+                        `END:VEVENT`
+                    );
+
+                    // Tuesday Early Dismissal
+                    childEvents.push(
+                        `BEGIN:VEVENT\r\n` +
+                        `SUMMARY:${name} Tuesday Early Dismissal (${config.label})\r\n` +
+                        `DESCRIPTION:${name} Tuesday Dismissal Pickup at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
+                        `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `DTSTART;TZID=America/Los_Angeles:20260818T${config.et_tue}\r\n` +
+                        `DTEND;TZID=America/Los_Angeles:20260818T${config.et_tue}\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=TU\r\n` +
+                        `${exdates.map(d => `EXDATE;TZID=America/Los_Angeles:${d}T${config.et_tue}`).join('\r\n')}\r\n` +
                         `END:VEVENT`
                     );
                 } else {
+                    // Separate event per child
                     childEvents.push(
                         `BEGIN:VEVENT\r\n` +
-                        `SUMMARY:${name}'s ${config.label}\r\n` +
+                        `SUMMARY:${name}'s ${config.label} (Mon, Wed, Thu, Fri)\r\n` +
                         `DESCRIPTION:${name} Bell Schedule at Vista Del Mar Elementary School.\\nRegular: ${config.text}\r\n` +
                         `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
                         `DTSTART;TZID=America/Los_Angeles:20260818T${config.st}\r\n` +
                         `DTEND;TZID=America/Los_Angeles:20260818T${config.et}\r\n` +
-                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,TU,WE,TH,FR\r\n` +
-                        `${exdateString}\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=MO,WE,TH,FR\r\n` +
+                        `${exdateStringSt}\r\n` +
+                        `END:VEVENT`
+                    );
+                    childEvents.push(
+                        `BEGIN:VEVENT\r\n` +
+                        `SUMMARY:${name}'s Tuesday ${config.label}\r\n` +
+                        `DESCRIPTION:${name} Tuesday Bell Schedule at Vista Del Mar Elementary School.\\nSchedule: ${config.text}\r\n` +
+                        `LOCATION:Vista Del Mar Elementary School\\, San Clemente\\, CA\r\n` +
+                        `DTSTART;TZID=America/Los_Angeles:20260818T${config.st_tue || config.st}\r\n` +
+                        `DTEND;TZID=America/Los_Angeles:20260818T${config.et_tue}\r\n` +
+                        `RRULE:FREQ=WEEKLY;UNTIL=20270603T235959Z;BYDAY=TU\r\n` +
+                        `${exdateStringStTue}\r\n` +
                         `END:VEVENT`
                     );
                 }
